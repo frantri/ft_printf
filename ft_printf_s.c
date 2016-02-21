@@ -10,18 +10,19 @@ static void		print_wchart(t_arg *arg, wchar_t *ch)
 		arg->conv = 's';
 		print_s(arg, NULL);
 	}
-	while (ch[i])
-	{
-		put_wchar(arg, (unsigned int)(ch[i]));
-		i++;
-	}
+	else
+		while (ch[i])
+		{
+			put_wchar(arg, (unsigned int)(ch[i]));
+			i++;
+		}
 }
 
 void		handle_s(t_arg *arg, va_list ap)
 {
 	if (arg->mod == NULL &&  arg->conv == 's')
 		print_s(arg, (char *)va_arg(ap, char *));
-	else if ((ft_strcmp("l", arg->mod) && arg->conv == 's') ||
+	else if ((arg->mod && ft_strcmp("l", arg->mod) && arg->conv == 's') ||
 			arg->conv == 'S')
 		print_wchart(arg, (wchar_t *)va_arg(ap, wchar_t *));
 }

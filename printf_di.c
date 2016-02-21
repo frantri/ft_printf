@@ -45,7 +45,7 @@ static void	print_prec(t_arg *arg, intmax_t n)
 		size = (arg->f_space) ? arg->v_len - 1 : arg->v_len;
 	else if (arg->f_prec && arg->v_prec)
 		size = arg->v_prec;
-	if (arg->f_plus && n > 0 && !arg->f_prec)
+	if (arg->f_plus && n >= 0 && !arg->f_prec)
 		size--;
 	while (size > len)
 	{

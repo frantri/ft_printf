@@ -1,5 +1,6 @@
 #include "ft_printf.h"
 
+#define DEBUG printf("%s %d\n", __func__, __LINE__)
 void	handle_c(t_arg *arg, va_list ap)
 {
 	int		i;
@@ -9,8 +10,8 @@ void	handle_c(t_arg *arg, va_list ap)
 		add_char_to_buffer(' ');
 	if (arg->mod == NULL && arg->conv == 'c')
 		arg->nb_char += add_char_to_buffer((char)va_arg(ap, int));
-	else if (strcmp(arg->mod, "l") == 0 || arg->conv == 'C')
-		put_wchar(arg, (unsigned int)va_arg(ap, wchar_t *));
+	else if ((arg->mod && strcmp(arg->mod, "l") == 0) || arg->conv == 'C')
+		put_wchar(arg, (unsigned int)va_arg(ap, wchar_t));
 	make_padding(arg, 1);
 }
 

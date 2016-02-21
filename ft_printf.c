@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
+#define DEBUG printf("%s %d\n", __func__, __LINE__)
 void	print_arg(t_arg *arg)
 {
 	if (arg->f_zero)
@@ -46,16 +47,17 @@ void	handle_conv(va_list ap, char *format, int *i)
 		handle_s(&arg, ap);
 	else if (arg.conv == '%')
 		print_s(&arg, "%");
-	else if (arg.conv == 'x' || arg.conv == 'X' ||
+	else if (arg.conv == 'x' || arg.conv == 'X' || arg.conv == 'p' ||
 			arg.conv == 'o' || arg.conv == 'u' || arg.conv == 'U')
 		handle_uxo(&arg, ap);
-	else if (arg.conv == 'c')
+	else if (arg.conv == 'c' || arg.conv == 'C')
+	{
 		handle_c(&arg, ap);
+	}
 }
 
 int		ft_printf(char *format, ...)
 {
-	setlocale(LC_ALL, "en_US.UTF-8");
 	int i = 0;
 	ret = 0;
 	va_list	ap;

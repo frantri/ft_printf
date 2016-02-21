@@ -13,6 +13,7 @@ void	init_arg(t_arg *arg)
 	arg->v_prec = 0;
 	arg->f_field = 0;
 	arg->v_len = 0;
+	arg->nb_char = 0;
 	arg->format = (void *)0;
 	arg->mod = (void *)0;
 	arg->conv = 0;

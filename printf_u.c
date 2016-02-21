@@ -3,12 +3,14 @@
 
 static void	print_prefix(t_arg *arg, uintmax_t n)
 {
-	if (!arg->f_hashtag || (!n && arg->conv != 'o') || (arg->conv != 'o' &&
-				arg->conv != 'x' && arg->conv != 'X'))
+	if ((!arg->f_hashtag && arg->conv != 'p') ||
+				(!n && arg->conv != 'o' &&arg->conv != 'p') ||
+				(arg->conv != 'o' &&
+				arg->conv != 'x' && arg->conv != 'X' && arg->conv != 'p'))
 		return ;
 	add_char_to_buffer('0');
 	arg->nb_char++;
-	if (arg->conv == 'x')
+	if (arg->conv == 'x' || arg->conv == 'p')
 	{
 		add_char_to_buffer('x');
 		arg->nb_char++;
@@ -34,7 +36,7 @@ void	print_spaces_u(t_arg *arg, uintmax_t n, int base)
 	if (arg->f_prec && arg->v_prec)
 		size = arg->v_prec;
 	print = (size > len ? size : len);
-	if (arg->f_hashtag)
+	if (arg->f_hashtag || arg->conv == 'p')
 		print += 1 + (arg->conv != 'o');
 	if (arg->f_plus)
 		print++;
@@ -83,16 +85,18 @@ void	print_u(t_arg *arg, uintmax_t n, int base)
 
 void	handle_uxo(t_arg *arg, va_list ap)
 {
-	//print_arg(arg);
 	int	base;
 
+	//print_arg(arg);
 	if (arg->conv == 'u' || arg->conv == 'U')
 		base = 10;
 	else if (arg->conv == 'x' || arg->conv == 'X')
 		base = 16;
 	else
 		base = 8;
-	if (arg->mod == NULL && arg->conv != 'U')
+	if (arg->conv == 'p')
+		print_u(arg, va_arg(ap, unsigned long), 16);
+	else if (arg->mod == NULL && arg->conv != 'U')
 		print_u(arg, va_arg(ap, unsigned int), base);
 	else if (arg->conv == 'U' || ft_strcmp(arg->mod, "l") == 0)
 		print_u(arg, va_arg(ap, unsigned long), base);

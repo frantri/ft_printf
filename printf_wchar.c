@@ -24,6 +24,9 @@ void			put_wchar(t_arg *arg, unsigned int c)
 {
 	int		l;
 
+	if (c == 0)
+		return ;
+	flush_buffer();
 	l = get_nb_octs(c);
 	if (l == 1)
 		print_wchar1(arg, c);
@@ -33,6 +36,7 @@ void			put_wchar(t_arg *arg, unsigned int c)
 		print_wchar3(arg, c);
 	else
 		print_wchar4(arg, c);
+	make_padding(arg, 0);
 }
 
 void			print_wchar1(t_arg *arg, unsigned int c)
