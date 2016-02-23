@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/23 08:43:32 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/23 08:44:20 by ftriquet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 
 int		nbr_len(intmax_t nb, int base)
@@ -21,7 +33,7 @@ int		nbr_len_u(uintmax_t n, int base)
 	return (i);
 }
 
-int			ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
 	size_t	i;
 	int		sign;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf_u.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/23 08:32:22 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/23 08:41:16 by ftriquet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include "stdio.h"
 
@@ -5,8 +17,8 @@ static void	print_prefix(t_arg *arg, uintmax_t n)
 {
 	if ((!arg->f_hashtag && arg->conv != 'p') ||
 			(!n && arg->conv != 'o' && arg->conv != 'p' &&
-			 arg->conv != 'O') || (arg->conv != 'o' && arg->conv != 'O' &&
-				 arg->conv != 'x' && arg->conv != 'X' && arg->conv != 'p'))
+			arg->conv != 'O') || (arg->conv != 'o' && arg->conv != 'O' &&
+				arg->conv != 'x' && arg->conv != 'X' && arg->conv != 'p'))
 		return ;
 	if ((arg->conv == 'o' || arg->conv == 'O') && n == 0 && !arg->f_prec)
 		return ;
@@ -24,12 +36,11 @@ static void	print_prefix(t_arg *arg, uintmax_t n)
 	}
 }
 
-void	print_spaces_u(t_arg *arg, uintmax_t n, int base)
+static void	print_spaces_u(t_arg *arg, uintmax_t n, int base)
 {
 	int		size;
 	int		len;
 	int		print;
-
 
 	size = 0;
 	len = nbr_len_u(n, base);
@@ -48,7 +59,7 @@ void	print_spaces_u(t_arg *arg, uintmax_t n, int base)
 		arg->nb_char += add_char_to_buffer(arg, ' ');
 }
 
-void	print_prec_u(t_arg *arg, uintmax_t n, int base)
+static void	print_prec_u(t_arg *arg, uintmax_t n, int base)
 {
 	int		s;
 	int		l;
@@ -60,8 +71,8 @@ void	print_prec_u(t_arg *arg, uintmax_t n, int base)
 	else if (arg->v_prec)
 		s = arg->v_prec;
 	print_prefix(arg, n);
-	if (!arg->f_prec && arg->f_hashtag && (arg->conv == 'x' || arg->conv == 'X' ||
-				arg->conv == 'o' || arg->conv == 'O'))
+	if (!arg->f_prec && arg->f_hashtag && (arg->conv == 'x' ||
+				arg->conv == 'X' || arg->conv == 'o' || arg->conv == 'O'))
 		s -= (1 + (arg->conv == 'x' || arg->conv == 'X'));
 	else if ((arg->conv == 'o' || arg->conv == 'O') && arg->f_hashtag)
 		s--;
@@ -72,30 +83,29 @@ void	print_prec_u(t_arg *arg, uintmax_t n, int base)
 	}
 }
 
-void	print_u(t_arg *arg, uintmax_t n, int base)
+static void	print_u(t_arg *arg, uintmax_t n, int base)
 {
 	int		length;
 
 	print_spaces_u(arg, n, base);
-	print_prec_u(arg,n , base);
+	print_prec_u(arg, n, base);
 	length = nbr_len_u(n, base) + arg->nb_char;
 	if (arg->f_space || arg->f_plus)
 		length--;
 	if (!(arg->f_prec && arg->v_prec == 0 && n == 0))
 		arg->nb_char += add_uint_to_buffer(arg, n, base, arg->conv == 'X');
-	make_padding(arg, n);
+	make_padding(arg);
 }
 
-void	handle_uxo(t_arg *arg, va_list ap)
+void		handle_uxo(t_arg *arg, va_list ap)
 {
 	int	base;
 
+	base = 8;
 	if (arg->conv == 'u' || arg->conv == 'U')
 		base = 10;
 	else if (arg->conv == 'x' || arg->conv == 'X')
 		base = 16;
-	else
-		base = 8;
 	if (arg->conv == 'p')
 		print_u(arg, va_arg(ap, unsigned long), 16);
 	else if (arg->conv == 'O')

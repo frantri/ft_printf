@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf_s_utils.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/23 08:34:34 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/23 08:34:47 by ftriquet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int		get_nb_octs(unsigned int c)
@@ -19,7 +31,7 @@ int		get_nb_octs(unsigned int c)
 	return (4);
 }
 
-int	putnstr(t_arg *arg, char *s, int n)
+int		putnstr(t_arg *arg, char *s, int n)
 {
 	int		i;
 
@@ -32,7 +44,7 @@ int	putnstr(t_arg *arg, char *s, int n)
 	return (i);
 }
 
-int	putnwchar(t_arg *arg, wchar_t *ch, int n)
+int		putnwchar(t_arg *arg, wchar_t *ch, int n)
 {
 	int		i;
 

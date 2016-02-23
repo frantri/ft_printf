@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf_di.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/23 08:32:33 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/23 08:41:02 by ftriquet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include <stdio.h>
 
@@ -62,12 +74,11 @@ static void	print_d(t_arg *arg, intmax_t n)
 		arg->nb_char += add_uint_to_buffer(arg, -n, 10, 0);
 	else if (!(arg->f_prec && !arg->v_prec && n == 0))
 		arg->nb_char += add_uint_to_buffer(arg, n, 10, 0);
-	make_padding(arg, 0);
+	make_padding(arg);
 }
 
-void	handle_d(t_arg *arg, va_list ap)
+void		handle_d(t_arg *arg, va_list ap)
 {
-	//print_arg(arg);
 	if (arg->mod == NULL && arg->conv != 'D')
 		print_d(arg, (int)va_arg(ap, int));
 	else if (arg->conv == 'D' || ft_strcmp(arg->mod, "l") == 0)

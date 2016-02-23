@@ -1,77 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/23 08:04:06 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/23 08:23:07 by ftriquet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-void	flush_buffer(t_arg *arg)
+static void	handle_format(t_arg *arg, char *format, va_list ap)
 {
-	if (arg->curs)
-	{
-		write(1, arg->buffer, arg->curs);
-		arg->curs = 0;
-	}
-}
+	int		i;
 
-static void	handle_other(t_arg *arg)
-{
-	char	*res;
-
-	res = ft_strnew(2);
-	res[0] = arg->conv;
-	if (arg->f_prec && !arg->v_prec)
-		arg->v_prec = 1;
-	print_s(arg, res);
-	free(res);
-}
-
-int		handle_conv(t_arg *arg, va_list ap, char *format, int *i)
-{
-	init_arg(arg);
-	*i += fill_arg(arg, format + *i);
-	if (arg->conv == 'd' || arg->conv == 'D' || arg->conv == 'i')
-		handle_d(arg, ap);
-	else if (arg->conv == 's' || arg->conv == 'S')
-	{
-		if (handle_s(arg, ap) == -1)
-			return (-1);
-	}
-	else if (arg->conv == 'x' || arg->conv == 'X' || arg->conv == 'p' ||
-			arg->conv == 'o' || arg->conv == 'u' || arg->conv == 'U' ||
-			arg->conv == 'O')
-		handle_uxo(arg, ap);
-	else if (arg->conv == 'c' || arg->conv == 'C')
-		handle_c(arg, ap);
-	else
-		handle_other(arg);
-	free(arg->format);
-	return (1);
-}
-
-int		ft_printf(char *format, ...)
-{
-	int i = 0;
-	t_arg	arg;
-	va_list	ap;
-
-	setlocale(LC_ALL, "en_US.UTF-8");
-	arg.ret = 0;
-	arg.curs = 0;
-	va_start(ap, format);
+	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			if (format[i + 1] && format[i + 1] == '%' && (i += 2))
-				add_char_to_buffer(&arg, '%');
-			else if (handle_conv(&arg, ap, format, &i) == -1)
-				return (-1);
+				add_char_to_buffer(arg, '%');
+			else
+				handle_conv(arg, ap, format, &i);
 		}
+		else if (format[i] == '{' && handle_color(arg, format, &i) == 0)
+			continue ;
 		else
-		{
-			add_char_to_buffer(&arg, format[i]);
-			i++;
-		}
+			add_char_to_buffer(arg, format[i++]);
 	}
+	flush_buffer(arg);
+}
+
+int			ft_printf(char *format, ...)
+{
+	t_arg	arg;
+	va_list	ap;
+
+	if (!format)
+		return (-1);
+	init_printf(&arg, STDOUT_FILENO);
+	va_start(ap, format);
+	handle_format(&arg, format, ap);
 	va_end(ap);
-	flush_buffer(&arg);
-	return (arg.ret);
+	return (arg.err == -1 ? arg.err : arg.ret);
+}
+
+int			ft_dprintf(int fd, char *format, ...)
+{
+	t_arg	arg;
+	va_list	ap;
+
+	if (!format)
+		return (-1);
+	init_printf(&arg, fd);
+	va_start(ap, format);
+	handle_format(&arg, format, ap);
+	va_end(ap);
+	return (arg.err == -1 ? arg.err : arg.ret);
 }

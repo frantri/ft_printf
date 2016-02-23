@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_c.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/23 08:38:57 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/23 08:39:31 by ftriquet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include <unistd.h>
 
@@ -15,14 +27,13 @@ void	handle_c(t_arg *arg, va_list ap)
 		arg->nb_char += add_char_to_buffer(arg, (char)va_arg(ap, int));
 	else if ((arg->mod && strcmp(arg->mod, "l") == 0) || arg->conv == 'C')
 		put_wchar(arg, (unsigned int)va_arg(ap, wchar_t));
-	make_padding(arg, 1);
+	make_padding(arg);
 }
 
-void        make_padding(t_arg *arg, int length)
+void	make_padding(t_arg *arg)
 {
 	int size;
 
-	(void)length;
 	size = 0;
 	if (arg->f_minus)
 		size = arg->v_len;

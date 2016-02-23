@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf_wchar.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/23 08:28:33 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/23 08:41:24 by ftriquet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include <unistd.h>
 
@@ -5,12 +17,8 @@ void			put_wchar(t_arg *arg, unsigned int c)
 {
 	int		l;
 
-	if (c == 0)
-	{
-		arg->nb_char++;
-		arg->ret++;
-		return ;
-	}
+	if (arg->f_space || arg->v_len || arg->f_prec)
+		arg->err = -1;
 	flush_buffer(arg);
 	l = get_nb_octs(c);
 	if (l == 1)
@@ -23,17 +31,17 @@ void			put_wchar(t_arg *arg, unsigned int c)
 		print_wchar4(arg, c);
 	arg->ret += l;
 	if (arg->conv == 'c' || arg->conv == 'C')
-		make_padding(arg, 0);
+		make_padding(arg);
 }
 
 void			print_wchar1(t_arg *arg, unsigned int c)
 {
-	char ch;
+	unsigned char ch;
 
 	if (arg)
 		arg->nb_char++;
-	ch = (char)c;
-	write(1, &c, 1);
+	ch = (unsigned char)c;
+	write(1, &ch, 1);
 }
 
 void			print_wchar2(t_arg *arg, unsigned int c)
@@ -44,10 +52,8 @@ void			print_wchar2(t_arg *arg, unsigned int c)
 	if (arg)
 		arg->nb_char += 2;
 	mask = 49280;
-	mask |= (((unsigned char)c << 2) >> 2);
-	mask |= (((unsigned char)c >> 6) << 8);
-	mask |= ((((unsigned char)(c >> 8) << 2) >> 2) << 10);
-	mask |= ((unsigned char)(c >> 14) << 12);
+	mask |= ((c << 26) >> 26);
+	mask |= (((c << 21) >> 27) << 8);
 	w = ((unsigned char *)&mask)[1];
 	write(1, &w, 1);
 	w = ((unsigned char *)&mask)[0];
@@ -69,7 +75,7 @@ void			print_wchar3(t_arg *arg, unsigned int c)
 	mask |= oct;
 	oct = ((unsigned int)(((c << 20) >> 26))) << 8;
 	mask |= oct;
-	oct =(unsigned int)(((c >> 12) << 16));
+	oct = (unsigned int)(((c >> 12) << 16));
 	mask |= oct;
 	w = ((unsigned char *)&mask)[2];
 	write(1, &w, 1);
@@ -79,7 +85,7 @@ void			print_wchar3(t_arg *arg, unsigned int c)
 	write(1, &w, 1);
 }
 
-void	print_wchar4(t_arg *arg, unsigned int c)
+void			print_wchar4(t_arg *arg, unsigned int c)
 {
 	unsigned int	mask;
 	int				w;
@@ -94,7 +100,7 @@ void	print_wchar4(t_arg *arg, unsigned int c)
 	mask |= oct;
 	oct = ((c << 14) >> 26) << 16;
 	mask |= oct;
-	oct = ((c << 10) >> 26) << 20;
+	oct = ((c << 10) >> 26) << 24;
 	mask |= oct;
 	w = ((unsigned char *)&mask)[3];
 	write(1, &w, 1);

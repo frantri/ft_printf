@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill_flags.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/23 08:28:21 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/23 08:28:25 by ftriquet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 
 void	init_arg(t_arg *arg)
@@ -13,7 +25,7 @@ void	init_arg(t_arg *arg)
 	arg->v_len = 0;
 	arg->nb_char = 0;
 	arg->format = (void *)0;
-	arg->mod = (void *)0;
+	arg->mod = NULL;
 	arg->conv = 0;
 }
 
@@ -89,9 +101,8 @@ void	set_flag2(t_arg *arg, char *format, int *i)
 		arg->mod = "j";
 	else if (format[*i] == 'z' && ++(*i))
 		arg->mod = "z";
-	else if (format[*i] == '.' && ++(*i))
+	else if (format[*i] == '.' && ++(*i) && (arg->f_prec = 1))
 	{
-		arg->f_prec = 1;
 		arg->v_prec = ft_atoi(format + *i);
 		(*i) += nbr_len(arg->v_prec, 10) - (arg->v_prec == 0);
 	}
