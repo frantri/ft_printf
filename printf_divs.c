@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:17:28 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/23 09:09:46 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/23 09:37:02 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int			handle_conv(t_arg *arg, va_list ap, char *format, int *i)
 
 void		init_printf(t_arg *arg, int fd)
 {
-	setlocale(LC_ALL, "en_US.UTF-8");
 	arg->ret = 0;
 	arg->curs = 0;
 	arg->err = 0;

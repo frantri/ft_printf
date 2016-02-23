@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:28:33 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/23 09:09:15 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/23 10:02:47 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void			put_wchar(t_arg *arg, unsigned int c)
 {
 	int		l;
 
-	if (arg->f_space || arg->v_len || arg->f_prec)
-		arg->err = -1;
 	flush_buffer(arg);
 	l = get_nb_octs(c);
 	if (l == 1)
