@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:32:22 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/23 08:41:16 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/23 11:29:25 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,12 @@ static void	print_prec_u(t_arg *arg, uintmax_t n, int base)
 	else if (arg->v_prec)
 		s = arg->v_prec;
 	print_prefix(arg, n);
-	if (!arg->f_prec && arg->f_hashtag && (arg->conv == 'x' ||
+	if (!arg->f_prec && (arg->f_hashtag)
+			&& (arg->conv == 'x' ||
 				arg->conv == 'X' || arg->conv == 'o' || arg->conv == 'O'))
-		s -= (1 + (arg->conv == 'x' || arg->conv == 'X'));
+		s -= (1 + (arg->conv == 'x' || arg->conv == 'X' || arg->conv == 'p'));
+	if (arg->conv == 'p')
+		s -= 2;
 	else if ((arg->conv == 'o' || arg->conv == 'O') && arg->f_hashtag)
 		s--;
 	while (s > l)
