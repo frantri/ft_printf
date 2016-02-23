@@ -60,8 +60,8 @@ void	print_prec_u(t_arg *arg, uintmax_t n, int base)
 	else if (arg->v_prec)
 		s = arg->v_prec;
 	print_prefix(arg, n);
-	if (arg->f_hashtag)
-		s -= (1 + (arg->conv != 'o'));
+	if (arg->f_hashtag && (arg->conv == 'o' || arg->conv == 'O'))
+		s--;
 	while (s > l)
 	{
 		arg->nb_char += add_char_to_buffer(arg, '0');

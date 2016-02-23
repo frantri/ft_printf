@@ -1,6 +1,7 @@
 #include <ft_printf.h>
 #include <stdlib.h>
 
+#include <stdio.h>
 char	digit(int nb, int maj)
 {
 	if (nb < 10)
@@ -14,22 +15,15 @@ char	*ft_itoa_u(uintmax_t n, int base, int maj)
 {
 	char	*res;
 	int		size;
-	char	*tmp;
 
-	size = nbr_len(n, base);
+	size = nbr_len_u(n, base);
 	if (!(res = malloc(sizeof(*res) * (size + 1))))
 		return (NULL);
 	res[size] = 0;
-	while (size--)
+	while (size-- >= 1)
 	{
 		res[size] = digit(n % base, maj);
 		n /= base;
-	}
-	while (res[0] && res[0] == '0' && res[1])
-	{
-		tmp = ft_strdup(res + 1);
-		free(res);
-		res = tmp;
 	}
 	return (res);
 }

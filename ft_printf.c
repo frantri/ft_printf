@@ -17,6 +17,8 @@ static void	handle_other(t_arg *arg)
 
 	res = ft_strnew(2);
 	res[0] = arg->conv;
+	if (arg->f_prec && !arg->v_prec)
+		arg->v_prec = 1;
 	print_s(arg, res);
 	free(res);
 }
@@ -49,6 +51,8 @@ int		ft_printf(char *format, ...)
 	int i = 0;
 	t_arg	arg;
 	va_list	ap;
+
+	setlocale(LC_ALL, "en_US.UTF-8");
 	arg.ret = 0;
 	arg.curs = 0;
 	va_start(ap, format);

@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include <ft_printf.h>
-#define DEBUG printf("%s %d\n", __func__, __LINE__)
 
 void	init_arg(t_arg *arg)
 {
@@ -41,7 +39,7 @@ int		fill_arg(t_arg *arg, char *format)
 	i = 1;
 	while (format[i] && !is_conversion(format[i]))
 	{
-		if (ft_get_index("hljz0123456789#% -+.", format[i]) == -1)
+		if (ft_get_index("hljz0123456789# -+.", format[i]) == -1)
 			break ;
 		i++;
 	}
