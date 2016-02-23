@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:28:33 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/23 08:41:24 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/23 09:09:15 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			print_wchar1(t_arg *arg, unsigned int c)
 	if (arg)
 		arg->nb_char++;
 	ch = (unsigned char)c;
-	write(1, &ch, 1);
+	write(arg->fd, &ch, 1);
 }
 
 void			print_wchar2(t_arg *arg, unsigned int c)
@@ -55,9 +55,9 @@ void			print_wchar2(t_arg *arg, unsigned int c)
 	mask |= ((c << 26) >> 26);
 	mask |= (((c << 21) >> 27) << 8);
 	w = ((unsigned char *)&mask)[1];
-	write(1, &w, 1);
+	write(arg->fd, &w, 1);
 	w = ((unsigned char *)&mask)[0];
-	write(1, &w, 1);
+	write(arg->fd, &w, 1);
 }
 
 void			print_wchar3(t_arg *arg, unsigned int c)
@@ -78,11 +78,11 @@ void			print_wchar3(t_arg *arg, unsigned int c)
 	oct = (unsigned int)(((c >> 12) << 16));
 	mask |= oct;
 	w = ((unsigned char *)&mask)[2];
-	write(1, &w, 1);
+	write(arg->fd, &w, 1);
 	w = ((unsigned char *)&mask)[1];
-	write(1, &w, 1);
+	write(arg->fd, &w, 1);
 	w = ((unsigned char *)&mask)[0];
-	write(1, &w, 1);
+	write(arg->fd, &w, 1);
 }
 
 void			print_wchar4(t_arg *arg, unsigned int c)
@@ -103,11 +103,11 @@ void			print_wchar4(t_arg *arg, unsigned int c)
 	oct = ((c << 10) >> 26) << 24;
 	mask |= oct;
 	w = ((unsigned char *)&mask)[3];
-	write(1, &w, 1);
+	write(arg->fd, &w, 1);
 	w = ((unsigned char *)&mask)[2];
-	write(1, &w, 1);
+	write(arg->fd, &w, 1);
 	w = ((unsigned char *)&mask)[1];
-	write(1, &w, 1);
+	write(arg->fd, &w, 1);
 	w = ((unsigned char *)&mask)[0];
-	write(1, &w, 1);
+	write(arg->fd, &w, 1);
 }

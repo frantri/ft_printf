@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:44:27 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/23 08:44:30 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/23 09:09:13 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		add_string_to_buffer(t_arg *arg, char *str)
 	{
 		if (arg->curs == PTF_BUFF_SIZE)
 		{
-			write(1, arg->buffer, PTF_BUFF_SIZE);
+			write(arg->fd, arg->buffer, PTF_BUFF_SIZE);
 			arg->curs = 0;
 		}
 		arg->buffer[arg->curs] = str[i];
@@ -31,7 +31,7 @@ int		add_string_to_buffer(t_arg *arg, char *str)
 		++arg->curs;
 		if (arg->curs && arg->buffer[arg->curs - 1] == '\n')
 		{
-			write(1, arg->buffer, arg->curs);
+			write(arg->fd, arg->buffer, arg->curs);
 			arg->curs = 0;
 		}
 	}
@@ -44,14 +44,14 @@ int		add_char_to_buffer(t_arg *arg, char c)
 	++arg->ret;
 	if (arg->curs == PTF_BUFF_SIZE)
 	{
-		write(1, arg->buffer, PTF_BUFF_SIZE);
+		write(arg->fd, arg->buffer, PTF_BUFF_SIZE);
 		arg->curs = 0;
 	}
 	arg->buffer[arg->curs] = c;
 	++arg->curs;
 	if (arg->curs && arg->buffer[arg->curs - 1] == '\n')
 	{
-		write(1, arg->buffer, arg->curs);
+		write(arg->fd, arg->buffer, arg->curs);
 		arg->curs = 0;
 	}
 	return (1);

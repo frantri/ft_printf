@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:17:28 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/23 08:33:29 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/23 09:09:46 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		flush_buffer(t_arg *arg)
 {
 	if (arg->curs)
 	{
-		write(1, arg->buffer, arg->curs);
+		write(arg->fd, arg->buffer, arg->curs);
 		arg->curs = 0;
 	}
 }
