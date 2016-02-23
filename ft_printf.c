@@ -1,78 +1,73 @@
 #include <ft_printf.h>
+#include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
 
-#define DEBUG printf("%s %d\n", __func__, __LINE__)
-void	print_arg(t_arg *arg)
+void	flush_buffer(t_arg *arg)
 {
-	if (arg->f_zero)
-		printf("zero\n");
-	if (arg->f_minus)
-		printf("minus\n");
-	if (arg->f_plus)
-		printf("plus: \n");
-	if (arg->f_space)
-		printf("space: \n");
-	if (arg->f_hashtag)
-		printf("hashtag \n");
-	if (arg->f_prec)
-		printf("preci: %d\n", arg->v_prec);
-	if (arg->f_field)
-		printf("larg: %d\n", arg->v_len);
-	if (arg->format)
-		printf("format: %s\n", arg->format);
-	if (arg->mod)
-		printf("mod: %s\n", arg->mod);
-	printf("conv: %c\n", arg->conv);
-}
-
-void	flush_buffer(void)
-{
-	if (curs)
+	if (arg->curs)
 	{
-		write(1, buffer, curs);
-		curs = 0;
+		write(1, arg->buffer, arg->curs);
+		arg->curs = 0;
 	}
 }
 
-void	handle_conv(va_list ap, char *format, int *i)
+static void	handle_other(t_arg *arg)
 {
-	t_arg arg;
+	char	*res;
 
-	init_arg(&arg);
-	*i += fill_arg(&arg, format + *i);
-	if (arg.conv == 'd' || arg.conv == 'D' || arg.conv == 'i')
-		handle_d(&arg, ap);
-	else if (arg.conv == 's' || arg.conv == 'S')
-		handle_s(&arg, ap);
-	else if (arg.conv == '%')
-		print_s(&arg, "%");
-	else if (arg.conv == 'x' || arg.conv == 'X' || arg.conv == 'p' ||
-			arg.conv == 'o' || arg.conv == 'u' || arg.conv == 'U')
-		handle_uxo(&arg, ap);
-	else if (arg.conv == 'c' || arg.conv == 'C')
+	res = ft_strnew(2);
+	res[0] = arg->conv;
+	print_s(arg, res);
+	free(res);
+}
+
+int		handle_conv(t_arg *arg, va_list ap, char *format, int *i)
+{
+	init_arg(arg);
+	*i += fill_arg(arg, format + *i);
+	if (arg->conv == 'd' || arg->conv == 'D' || arg->conv == 'i')
+		handle_d(arg, ap);
+	else if (arg->conv == 's' || arg->conv == 'S')
 	{
-		handle_c(&arg, ap);
+		if (handle_s(arg, ap) == -1)
+			return (-1);
 	}
+	else if (arg->conv == 'x' || arg->conv == 'X' || arg->conv == 'p' ||
+			arg->conv == 'o' || arg->conv == 'u' || arg->conv == 'U' ||
+			arg->conv == 'O')
+		handle_uxo(arg, ap);
+	else if (arg->conv == 'c' || arg->conv == 'C')
+		handle_c(arg, ap);
+	else
+		handle_other(arg);
+	free(arg->format);
+	return (1);
 }
 
 int		ft_printf(char *format, ...)
 {
 	int i = 0;
-	ret = 0;
+	t_arg	arg;
 	va_list	ap;
+	arg.ret = 0;
+	arg.curs = 0;
 	va_start(ap, format);
 	while (format[i])
 	{
 		if (format[i] == '%')
-			handle_conv(ap, format, &i);
+		{
+			if (format[i + 1] && format[i + 1] == '%' && (i += 2))
+				add_char_to_buffer(&arg, '%');
+			else if (handle_conv(&arg, ap, format, &i) == -1)
+				return (-1);
+		}
 		else
 		{
-			add_char_to_buffer(format[i]);
+			add_char_to_buffer(&arg, format[i]);
 			i++;
 		}
 	}
 	va_end(ap);
-	flush_buffer();
-	return (ret);
+	flush_buffer(&arg);
+	return (arg.ret);
 }

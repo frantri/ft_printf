@@ -4,20 +4,22 @@
 static void	print_prefix(t_arg *arg, uintmax_t n)
 {
 	if ((!arg->f_hashtag && arg->conv != 'p') ||
-				(!n && arg->conv != 'o' &&arg->conv != 'p') ||
-				(arg->conv != 'o' &&
-				arg->conv != 'x' && arg->conv != 'X' && arg->conv != 'p'))
+			(!n && arg->conv != 'o' && arg->conv != 'p' &&
+			 arg->conv != 'O') || (arg->conv != 'o' && arg->conv != 'O' &&
+				 arg->conv != 'x' && arg->conv != 'X' && arg->conv != 'p'))
 		return ;
-	add_char_to_buffer('0');
+	if ((arg->conv == 'o' || arg->conv == 'O') && n == 0 && !arg->f_prec)
+		return ;
+	add_char_to_buffer(arg, '0');
 	arg->nb_char++;
 	if (arg->conv == 'x' || arg->conv == 'p')
 	{
-		add_char_to_buffer('x');
+		add_char_to_buffer(arg, 'x');
 		arg->nb_char++;
 	}
 	if (arg->conv == 'X')
 	{
-		add_char_to_buffer('X');
+		add_char_to_buffer(arg, 'X');
 		arg->nb_char++;
 	}
 }
@@ -40,10 +42,10 @@ void	print_spaces_u(t_arg *arg, uintmax_t n, int base)
 		print += 1 + (arg->conv != 'o');
 	if (arg->f_plus)
 		print++;
-	if ((n == 0 && arg->f_prec && arg->v_prec == 0) || arg->f_space)
+	if ((n == 0 && arg->f_prec && arg->v_prec == 0))
 		print--;
 	while (!arg->f_minus && arg->v_len >= ++print)
-		arg->nb_char += add_char_to_buffer(' ');
+		arg->nb_char += add_char_to_buffer(arg, ' ');
 }
 
 void	print_prec_u(t_arg *arg, uintmax_t n, int base)
@@ -62,7 +64,7 @@ void	print_prec_u(t_arg *arg, uintmax_t n, int base)
 		s -= (1 + (arg->conv != 'o'));
 	while (s > l)
 	{
-		arg->nb_char += add_char_to_buffer('0');
+		arg->nb_char += add_char_to_buffer(arg, '0');
 		s--;
 	}
 }
@@ -71,15 +73,13 @@ void	print_u(t_arg *arg, uintmax_t n, int base)
 {
 	int		length;
 
-	if (!arg->f_plus && arg->f_space)
-		arg->nb_char += add_char_to_buffer(' ');
 	print_spaces_u(arg, n, base);
 	print_prec_u(arg,n , base);
 	length = nbr_len_u(n, base) + arg->nb_char;
 	if (arg->f_space || arg->f_plus)
 		length--;
 	if (!(arg->f_prec && arg->v_prec == 0 && n == 0))
-		arg->nb_char += add_uint_to_buffer(n, base, arg->conv == 'X');
+		arg->nb_char += add_uint_to_buffer(arg, n, base, arg->conv == 'X');
 	make_padding(arg, n);
 }
 
@@ -87,7 +87,6 @@ void	handle_uxo(t_arg *arg, va_list ap)
 {
 	int	base;
 
-	//print_arg(arg);
 	if (arg->conv == 'u' || arg->conv == 'U')
 		base = 10;
 	else if (arg->conv == 'x' || arg->conv == 'X')
@@ -96,6 +95,8 @@ void	handle_uxo(t_arg *arg, va_list ap)
 		base = 8;
 	if (arg->conv == 'p')
 		print_u(arg, va_arg(ap, unsigned long), 16);
+	else if (arg->conv == 'O')
+		print_u(arg, va_arg(ap, unsigned long), 8);
 	else if (arg->mod == NULL && arg->conv != 'U')
 		print_u(arg, va_arg(ap, unsigned int), base);
 	else if (arg->conv == 'U' || ft_strcmp(arg->mod, "l") == 0)

@@ -40,7 +40,13 @@ int		fill_arg(t_arg *arg, char *format)
 
 	i = 1;
 	while (format[i] && !is_conversion(format[i]))
+	{
+		if (ft_get_index("hljz0123456789#% -+.", format[i]) == -1)
+			break ;
 		i++;
+	}
+	if (format[i] == '\0')
+		return (i);
 	arg->conv = format[i];
 	arg->format = ft_strsub(format, 0, i + 1);
 	i = 1;

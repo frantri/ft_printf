@@ -6,7 +6,7 @@
 #    By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 08:35:37 by ftriquet          #+#    #+#              #
-#    Updated: 2016/02/21 17:00:39 by ftriquet         ###   ########.fr        #
+#    Updated: 2016/02/22 23:39:50 by ftriquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC=ft_atoi.c \
 	buffer.c \
 	ft_printf_c.c \
 	ft_printf_s.c \
+	printf_s_utils.c \
 	printf_wchar.c \
 ft_empty_string.c \
 strmatch.c \
@@ -120,8 +121,8 @@ all:$(NAME)
 $(NAME):$(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
-%.o:%.c
-	gcc $(FLAGS) -c $^ -o $@ -I .
+%.o:%.c ft_printf.h
+	gcc $(FLAGS) -c $< -o $@ -I .
 clean:
 	rm -f $(OBJ)
 fclean:clean

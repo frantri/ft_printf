@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 10:28:49 by ftriquet          #+#    #+#             */
-/*   Updated: 2015/11/27 15:04:03 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/22 15:27:16 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 int		ft_strnequ(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-
-	i = 0;
 	if (s1 == NULL && s2 == NULL)
 		return (1);
 	else if (s1 == NULL || s2 == NULL)

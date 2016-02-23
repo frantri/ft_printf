@@ -1,32 +1,17 @@
 #include "ft_printf.h"
 #include <unistd.h>
 
-int		get_nb_octs(unsigned int c)
-{
-	int		i;
-
-	i = 0;
-	while (c)
-	{
-		i++;
-		c = c >> 1;
-	}
-	if (i <= 7)
-		return (1);
-	if (i <= 11)
-		return (2);
-	if (i <= 16)
-		return (3);
-	return (4);
-}
-
 void			put_wchar(t_arg *arg, unsigned int c)
 {
 	int		l;
 
 	if (c == 0)
+	{
+		arg->nb_char++;
+		arg->ret++;
 		return ;
-	flush_buffer();
+	}
+	flush_buffer(arg);
 	l = get_nb_octs(c);
 	if (l == 1)
 		print_wchar1(arg, c);
@@ -36,7 +21,9 @@ void			put_wchar(t_arg *arg, unsigned int c)
 		print_wchar3(arg, c);
 	else
 		print_wchar4(arg, c);
-	make_padding(arg, 0);
+	arg->ret += l;
+	if (arg->conv == 'c' || arg->conv == 'C')
+		make_padding(arg, 0);
 }
 
 void			print_wchar1(t_arg *arg, unsigned int c)
@@ -46,7 +33,7 @@ void			print_wchar1(t_arg *arg, unsigned int c)
 	if (arg)
 		arg->nb_char++;
 	ch = (char)c;
-	write(1, &ch, 1);
+	write(1, &c, 1);
 }
 
 void			print_wchar2(t_arg *arg, unsigned int c)

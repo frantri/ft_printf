@@ -20,10 +20,10 @@ static void	print_spaces(t_arg *arg, intmax_t n)
 		print++;
 	if (n < 0 && arg->v_prec + 1 > len)
 		print++;
-	if ((n == 0 && arg->f_prec && arg->v_prec == 0) || arg->f_space)
+	if ((n == 0 && arg->f_prec && arg->v_prec == 0)/* || arg->f_space*/)
 		print--;
 	while (!arg->f_minus && arg->v_len >= ++print)
-		arg->nb_char += add_char_to_buffer(' ');
+		arg->nb_char += add_char_to_buffer(arg, ' ');
 }
 
 static void	print_prec(t_arg *arg, intmax_t n)
@@ -37,10 +37,10 @@ static void	print_prec(t_arg *arg, intmax_t n)
 	{
 		if (arg->v_prec)
 			arg->v_prec++;
-		arg->nb_char += add_char_to_buffer('-');
+		arg->nb_char += add_char_to_buffer(arg, '-');
 	}
 	else if (arg->f_plus)
-		arg->nb_char += add_char_to_buffer('+');
+		arg->nb_char += add_char_to_buffer(arg, '+');
 	if (arg->f_zero && !arg->f_minus && !arg->f_prec)
 		size = (arg->f_space) ? arg->v_len - 1 : arg->v_len;
 	else if (arg->f_prec && arg->v_prec)
@@ -49,7 +49,7 @@ static void	print_prec(t_arg *arg, intmax_t n)
 		size--;
 	while (size > len)
 	{
-		arg->nb_char += add_char_to_buffer('0');
+		arg->nb_char += add_char_to_buffer(arg, '0');
 		size--;
 	}
 }
@@ -59,16 +59,16 @@ static void	print_d(t_arg *arg, intmax_t n)
 	int		len;
 
 	if (!arg->f_plus && arg->f_space && n >= 0)
-		arg->nb_char += add_char_to_buffer(' ');
+		arg->nb_char += add_char_to_buffer(arg, ' ');
 	print_spaces(arg, n);
 	print_prec(arg, n);
 	len = nbr_len(n, 10) + arg->nb_char;
 	if (arg->f_space || arg->f_plus || n < 0)
 		len--;
 	if (n < 0)
-		arg->nb_char += add_uint_to_buffer(-n, 10, 0);
+		arg->nb_char += add_uint_to_buffer(arg, -n, 10, 0);
 	else if (!(arg->f_prec && !arg->v_prec && n == 0))
-		arg->nb_char += add_uint_to_buffer(n, 10, 0);
+		arg->nb_char += add_uint_to_buffer(arg, n, 10, 0);
 	make_padding(arg, len);
 }
 
