@@ -9,6 +9,7 @@
 # include <wchar.h>
 # define MAX(a,b) ((a > b) ? a : b)
 # define MIN(a,b) ((a < b) ? a : b)
+# define PTF_BUFF_SIZE 4096
 
 typedef struct		s_arg
 {
@@ -25,7 +26,7 @@ typedef struct		s_arg
 	int				nb_char;
 	char			*mod;
 	char			conv;
-	char			buffer[4096];
+	char			buffer[PTF_BUFF_SIZE];
 	size_t			curs;
 	int				ret;
 }					t_arg;

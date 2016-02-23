@@ -10,9 +10,9 @@ int		add_string_to_buffer(t_arg *arg, char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (arg->curs == 4096)
+		if (arg->curs == PTF_BUFF_SIZE)
 		{
-			write(1, arg->buffer, 4096);
+			write(1, arg->buffer, PTF_BUFF_SIZE);
 			arg->curs = 0;
 		}
 		arg->buffer[arg->curs] = str[i];
@@ -31,9 +31,9 @@ int		add_string_to_buffer(t_arg *arg, char *str)
 int		add_char_to_buffer(t_arg *arg, char c)
 {
 	++arg->ret;
-	if (arg->curs == 4096)
+	if (arg->curs == PTF_BUFF_SIZE)
 	{
-		write(1, arg->buffer, 4096);
+		write(1, arg->buffer, PTF_BUFF_SIZE);
 		arg->curs = 0;
 	}
 	arg->buffer[arg->curs] = c;

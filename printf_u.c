@@ -60,7 +60,10 @@ void	print_prec_u(t_arg *arg, uintmax_t n, int base)
 	else if (arg->v_prec)
 		s = arg->v_prec;
 	print_prefix(arg, n);
-	if (arg->f_hashtag && (arg->conv == 'o' || arg->conv == 'O'))
+	if (!arg->f_prec && arg->f_hashtag && (arg->conv == 'x' || arg->conv == 'X' ||
+				arg->conv == 'o' || arg->conv == 'O'))
+		s -= (1 + (arg->conv == 'x' || arg->conv == 'X'));
+	else if ((arg->conv == 'o' || arg->conv == 'O') && arg->f_hashtag)
 		s--;
 	while (s > l)
 	{
