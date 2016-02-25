@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:45:09 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/23 11:12:24 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/25 10:02:16 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void				set_flag(t_arg *arg, char *format, int *i);
 void				set_flag2(t_arg *arg, char *format, int *i);
 int					fill_arg(t_arg *arg, char *format);
 int					is_conversion(char c);
-int					ft_atoi(const char *str);
 void				init_arg(t_arg *arg);
 char				*ft_itoa(intmax_t n, int base, int maj);
 char				*ft_itoa_u(uintmax_t n, int base, int maj);

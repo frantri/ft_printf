@@ -6,7 +6,7 @@
 #    By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 08:35:37 by ftriquet          #+#    #+#              #
-#    Updated: 2016/02/24 09:59:12 by ftriquet         ###   ########.fr        #
+#    Updated: 2016/02/25 10:01:55 by ftriquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,23 +47,6 @@ SRC_NAME = ft_atoi.c \
 		   ft_isprint.c \
 		   ft_isupper.c \
 		   ft_freetab.c \
-		   ft_lstadd.c \
-		   ft_lstadd_back.c \
-		   ft_lstaddcmp.c \
-		   ft_lstdel.c \
-		   ft_lstdel_rec.c \
-		   ft_lstdelone.c \
-		   ft_lstdelcontent.c \
-		   ft_lstgeti.c \
-		   ft_lstget.c \
-		   ft_lstiter.c \
-		   ft_lstmap.c \
-		   ft_lstnew.c \
-		   ft_lstrmdel.c \
-		   ft_lstsize.c \
-		   ft_lstcontains.c \
-		   ft_lstremove.c \
-		   ft_lstremovei.c \
 		   ft_memalloc.c \
 		   ft_memccpy.c \
 		   ft_memchr.c \

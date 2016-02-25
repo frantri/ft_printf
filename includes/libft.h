@@ -6,13 +6,14 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:15:42 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/25 08:29:07 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/25 10:02:43 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include <stdint.h>
 
 typedef struct		s_list
 {
@@ -115,36 +116,6 @@ void				ft_putchar_fd		(char c, int fd);
 void				ft_putstr_fd		(const char *s, int fd);
 void				ft_putendl_fd		(const char *s, int fd);
 void				ft_putnbr_fd		(int nb, int fd);
-
-t_list				*ft_lstnew			(const void *content,
-		size_t content_size);
-void				ft_lstdelone		(t_list **alst, void (*del)(void*,
-			size_t));
-void				ft_lstdel			(t_list **alst, void (*del)(void*,
-			size_t));
-void				ft_lstdel_rec		(t_list **alst, void (*del)(void*,
-			size_t));
-void				ft_lstadd			(t_list **alst, t_list *new);
-void				ft_lstadd_back		(t_list **alst, t_list *new);
-void				ft_lstiter			(t_list *lst, void (*f)(t_list *elem));
-t_list				*ft_lstmap			(t_list *lst,
-		t_list *(*f)(t_list *elem));
-t_list				*ft_lstremove		(t_list **list, void *ct, size_t len,
-		int (*cmp)(void*, size_t, void*, size_t));
-t_list				*ft_lstremovei		(t_list **list, int i);
-t_list				*ft_lstpop			(t_list **list);
-void				ft_lstrmdel			(t_list **list, void *ct, size_t len,
-		int (*cmp)(void*, size_t, void*, size_t));
-t_list				*ft_lstgeti			(t_list *list, int i);
-t_list				*ft_lstget			(t_list *list, void *ct, size_t len,
-		int (*cmp)(void*, size_t, void*, size_t));
-void				ft_lstaddcmp		(t_list **list, t_list *new,
-		int (*cmp)(void*, size_t, void*, size_t));
-int					ft_lstcontains		(t_list *list, void *ct, size_t len,
-		int	*(cmp)(void*, size_t, void*, size_t));
-size_t				ft_lstsize			(t_list *list);
-void				ft_lstdelcontent	(void *content, size_t content_size);
-
 t_bstree			*ft_bstree_new		(void *content, size_t content_size);
 int					ft_bstree_add		(t_bstree **root, t_bstree *node,
 		int (*cmp)(t_bstree*, t_bstree*));
