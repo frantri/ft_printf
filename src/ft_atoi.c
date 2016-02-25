@@ -6,13 +6,13 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:43:32 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/23 08:44:20 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/25 08:28:31 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-int		nbr_len(intmax_t nb, int base)
+int			nbr_len(intmax_t nb, int base)
 {
 	if (nb < 0)
 		return (1 + nbr_len_u(-nb, base));
@@ -20,7 +20,7 @@ int		nbr_len(intmax_t nb, int base)
 		return (nbr_len_u(nb, base));
 }
 
-int		nbr_len_u(uintmax_t n, int base)
+int			nbr_len_u(uintmax_t n, int base)
 {
 	int		i;
 
@@ -33,11 +33,11 @@ int		nbr_len_u(uintmax_t n, int base)
 	return (i);
 }
 
-int		ft_atoi(const char *str)
+intmax_t	ft_atoi(const char *str)
 {
-	size_t	i;
-	int		sign;
-	long	result;
+	size_t		i;
+	int			sign;
+	intmax_t	result;
 
 	result = 0;
 	i = 0;

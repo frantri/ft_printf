@@ -6,18 +6,13 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:15:42 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/21 03:04:48 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/25 08:29:07 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
-# define NEW_STACK	NULL
-# define EMPTY_STACK(s)	(s==NULL)
-# define STACK_PUSH(s,ct,ct_len)	ft_lstadd(&s,ft_lstnew(ct,ct_len))
-# define STACK_POP(s)	ft_lstremovei(&s,0)
-# define STACK_DEL(s)	ft_lstdel(&s,&ft_lstdelcontent)
 
 typedef struct		s_list
 {
@@ -78,7 +73,7 @@ void				ft_strreplace		(char *str, char old, char new);
 void				ft_freetab			(char **tab);
 char				*ft_strdup			(const char *s);
 size_t				ft_strlcat			(char *dest, const char *src, size_t n);
-int					ft_atoi				(const char *str);
+intmax_t			ft_atoi				(const char *str);
 int					ft_isalnum			(int c);
 int					ft_isalpha			(int c);
 int					ft_isascii			(int c);
