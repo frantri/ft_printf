@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freetab.c                                       :+:      :+:    :+:   */
+/*   ft_tabsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/23 08:43:04 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/26 17:08:09 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/02/26 15:25:38 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/26 15:26:39 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
-
-void		ft_freetab(char **tab)
+int		ft_tabsize(void **t)
 {
 	int		i;
 
 	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
+	if (!t)
+		return (-1);
+	while (t[i])
 		i++;
-	}
-	free(tab);
+	return (i);
 }

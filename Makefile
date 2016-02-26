@@ -6,12 +6,13 @@
 #    By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 08:35:37 by ftriquet          #+#    #+#              #
-#    Updated: 2016/02/25 10:01:55 by ftriquet         ###   ########.fr        #
+#    Updated: 2016/02/26 15:27:34 by ftriquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_NAME = ft_atoi.c \
 		   fill_flags.c \
+		   ft_tabsize.c \
 		   ft_printf.c \
 		   itoa.c \
 		   printf_di.c \
@@ -26,16 +27,11 @@ SRC_NAME = ft_atoi.c \
 		   ft_empty_string.c \
 		   strmatch.c \
 		   init.c \
-		   ft_bstree_add.c \
 		   get_next_line.c \
 		   ft_trim.c \
 		   ft_strsubptr.c \
 		   ft_match.c \
 		   ft_realloc.c \
-		   ft_bstree_contains.c \
-		   ft_bstree_del.c \
-		   ft_bstree_iter.c \
-		   ft_bstree_new.c \
 		   ft_bzero.c \
 		   ft_get_index.c \
 		   ft_isalnum.c \
@@ -121,7 +117,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADERS)
-	mkdir -p $(OBJ_PATH)
+	@mkdir -p $(OBJ_PATH)
 	gcc $(CFLAGS) -c $< -o $@ -I $(INC_PATH)
 
 clean:

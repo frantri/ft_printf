@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:15:42 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/25 10:02:43 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/26 15:27:59 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,7 @@
 # include <string.h>
 # include <stdint.h>
 
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
-
-typedef t_list*		t_stack;
-
-typedef struct		s_bstree
-{
-	void			*content;
-	size_t			content_size;
-	struct s_bstree	*left;
-	struct s_bstree	*right;
-}					t_bstree;
-
+int					ft_tabsize			(void **t);
 int					ft_empty_string		(const char *s);
 int					strmatch			(char *s1, char *s2);
 void				init_0				(int *i1, int *i2, int *i3, int *i4);
@@ -116,12 +100,4 @@ void				ft_putchar_fd		(char c, int fd);
 void				ft_putstr_fd		(const char *s, int fd);
 void				ft_putendl_fd		(const char *s, int fd);
 void				ft_putnbr_fd		(int nb, int fd);
-t_bstree			*ft_bstree_new		(void *content, size_t content_size);
-int					ft_bstree_add		(t_bstree **root, t_bstree *node,
-		int (*cmp)(t_bstree*, t_bstree*));
-int					ft_bstree_contains	(t_bstree *root, void *cont, size_t len,
-		int (*cmp)(void*, size_t, void*, size_t));
-void				ft_bstree_del		(t_bstree **root);
-void				ft_bstree_iter		(t_bstree *root,
-		void (*f)(void*, size_t));
 #endif
