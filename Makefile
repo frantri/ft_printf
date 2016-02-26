@@ -6,26 +6,26 @@
 #    By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 08:35:37 by ftriquet          #+#    #+#              #
-#    Updated: 2016/02/26 15:27:34 by ftriquet         ###   ########.fr        #
+#    Updated: 2016/02/26 20:30:36 by ftriquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = ft_atoi.c \
-		   fill_flags.c \
-		   ft_tabsize.c \
-		   ft_printf.c \
-		   itoa.c \
-		   printf_di.c \
-		   printf_u.c \
-		   buffer.c \
-		   ft_printf_c.c \
-		   ft_printf_s.c \
-		   printf_s_utils.c \
-		   printf_wchar.c \
-		   printf_color.c \
-		   printf_divs.c \
+SRC_NAME = ft_printf/ft_printf.c \
+		   ft_printf/fill_flags.c \
+		   ft_printf/printf_di.c \
+		   ft_printf/printf_u.c \
+		   ft_printf/buffer.c \
+		   ft_printf/ft_printf_c.c \
+		   ft_printf/ft_printf_s.c \
+		   ft_printf/printf_s_utils.c \
+		   ft_printf/printf_wchar.c \
+		   ft_printf/printf_color.c \
+		   ft_printf/printf_divs.c \
 		   ft_empty_string.c \
-		   strmatch.c \
+		   ft_tabsize.c \
+		   ft_atoi.c \
+		   ft_itoa.c \
+		   ft_nbr_len.c \
 		   init.c \
 		   get_next_line.c \
 		   ft_trim.c \
@@ -117,7 +117,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADERS)
-	@mkdir -p $(OBJ_PATH)
+	@mkdir -p ./obj/ft_printf
 	gcc $(CFLAGS) -c $< -o $@ -I $(INC_PATH)
 
 clean:

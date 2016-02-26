@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:15:42 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/26 15:27:59 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/26 20:26:01 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <string.h>
 # include <stdint.h>
 
+int					nbr_len_u			(uintmax_t n, int base);
+int					nbr_len			 	(intmax_t n, int base);
 int					ft_tabsize			(void **t);
 int					ft_empty_string		(const char *s);
 int					strmatch			(char *s1, char *s2);
