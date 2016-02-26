@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strmatch.c                                         :+:      :+:    :+:   */
+/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/20 19:38:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/01/20 20:32:19 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/26 20:31:26 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		strmatch(char *s1, char *s2)
+#include <stdint.h>
+#include <string.h>
+
+int			nbr_len_u(uintmax_t n, int base)
 {
-	if (*s1 == '\0' && *s2 == '\0')
-		return (1);
-	else if (*s1 == *s2)
-		return (strmatch(s1 + 1, s2 + 1));
-	else if (*s1 == '\0' && *s2 == '*')
-		return (strmatch(s1, s2 + 1));
-	else if (*s2 == '*')
-		return (strmatch(s1 + 1, s2) || strmatch(s1, s2 + 1));
+	int		i;
+
+	i = 1;
+	while (n >= (size_t)base)
+	{
+		++i;
+		n /= base;
+	}
+	return (i);
+}
+
+int			nbr_len(intmax_t nb, int base)
+{
+	if (nb < 0)
+		return (1 + nbr_len_u(-nb, base));
 	else
-		return (0);
+		return (nbr_len_u(nb, base));
 }

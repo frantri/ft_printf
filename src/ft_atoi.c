@@ -6,32 +6,11 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:43:32 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/25 08:28:31 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/26 20:24:22 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
-
-int			nbr_len(intmax_t nb, int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
-}
-
-int			nbr_len_u(uintmax_t n, int base)
-{
-	int		i;
-
-	i = 1;
-	while (n >= (size_t)base)
-	{
-		++i;
-		n /= base;
-	}
-	return (i);
-}
+#include <libft.h>
 
 intmax_t	ft_atoi(const char *str)
 {

@@ -6,13 +6,12 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:34:58 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/23 08:35:46 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/26 20:24:38 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
-#include "ft_printf.h"
+#include <libft.h>
 
 char	digit(int nb, int maj)
 {
