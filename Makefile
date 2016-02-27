@@ -6,7 +6,7 @@
 #    By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 08:35:37 by ftriquet          #+#    #+#              #
-#    Updated: 2016/02/27 08:59:10 by ftriquet         ###   ########.fr        #
+#    Updated: 2016/02/27 10:24:11 by ftriquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC_NAME += lists/ft_list_add.c \
 			lists/ft_list_cells.c \
 			lists/ft_list_init.c \
 			lists/ft_list_iter.c \
+			lists/ft_list_remove.c \
 			lists/ft_list_map.c
 
 SRC_NAME += mem/ft_bzero.c \

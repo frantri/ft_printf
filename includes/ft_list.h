@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 04:16:47 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:56:03 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/27 10:23:50 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ typedef struct			s_list
 	t_list_cell			*last;
 	void				(*del_func)(void *, size_t);
 }						t_list;
+int				ft_list_remove_back(t_list *list);
+int				ft_list_remove_front(t_list *list);
+
+int				ft_list_remove(
+		t_list *list,
+		void *data,
+		size_t data_size,
+		int (*cmp)(void *, size_t, void *, size_t));
 
 t_list_cell		*ft_new_list_cell(
 		void *data,
