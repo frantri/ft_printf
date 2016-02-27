@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 10:41:13 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 12:03:25 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/27 12:25:55 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void			*ft_list_get(
 	t_list_cell	*it;
 
 	it = list->first;
+	if (list->size == 0)
+		return (NULL);
 	if ((*cmp)(data, data_size, it->data, it->data_size) == 0)
 		return (ft_list_get_front(list));
 	if ((*cmp)(data, data_size, list->last->data, list->last->data_size) == 0)
