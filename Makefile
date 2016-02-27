@@ -6,7 +6,7 @@
 #    By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 08:35:37 by ftriquet          #+#    #+#              #
-#    Updated: 2016/02/27 07:27:36 by ftriquet         ###   ########.fr        #
+#    Updated: 2016/02/27 07:33:30 by ftriquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -125,7 +125,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	gcc $(CFLAGS) -c $< -o $@ -I $(INC_PATH)
 
 clean:
-	rm -f ./obj
+	rm -rf ./obj
 
 fclean:clean
 	rm -f $(NAME)
