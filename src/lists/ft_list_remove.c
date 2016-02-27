@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 10:10:42 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 15:23:57 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/27 16:47:32 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void			*ft_list_remove_back(t_list *list)
 		return (res);
 	tmp = list->last;
 	list->last = list->last->prev;
+	if (list->last)
+		list->last->next = NULL;
 	res = tmp->data;
 	free(tmp);
 	if (list->last == NULL)
@@ -42,6 +44,8 @@ void			*ft_list_remove_front(t_list *list)
 		return (res);
 	tmp = list->first;
 	list->first = list->first->next;
+	if (list->first)
+		list->first->prev = NULL;
 	res = tmp->data;
 	free(tmp);
 	if (list->first == NULL)
@@ -68,7 +72,7 @@ void			*ft_list_remove(
 		return (ft_list_remove_back(list));
 	while ((tmp = it->next))
 	{
-		if ((*cmp)(data, data_size, it->data, it->data_size) == 0)
+		if ((*cmp)(data, data_size, it->next->data, it->next->data_size) == 0)
 		{
 			tmp->next->prev = it;
 			it->next = tmp->next;

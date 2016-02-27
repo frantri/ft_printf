@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 10:41:13 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 13:41:18 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/27 16:31:23 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ void			*ft_list_get(
 	it = list->first;
 	if (list->size == 0)
 		return (NULL);
-	if ((*cmp)(data, data_size, it->data, it->data_size) == 0)
-		return (ft_list_get_front(list));
-	if ((*cmp)(data, data_size, list->last->data, list->last->data_size) == 0)
-		return (ft_list_get_back(list));
-	while (it->next)
+	while (it)
 	{
 		if ((*cmp)(data, data_size, it->data, it->data_size) == 0)
 			return (it->data);
