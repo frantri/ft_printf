@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 10:41:13 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 11:24:00 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/27 11:53:23 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ void		*ft_list_get_at(
 		cursor = pos > previous_pos ? cursor->prev : cursor->next;
 		previous_pos += pos > previous_pos ? 1 : -1;
 	}
-	return (cursor->data);
+	if (cursor)
+		return (cursor->data);
+	return (NULL);
 }
