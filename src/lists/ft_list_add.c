@@ -6,12 +6,13 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 02:38:58 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:54:39 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/27 15:23:47 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_list.h>
 #include <stdlib.h>
+#include <libft.h>
 
 int				ft_list_add_back(
 		t_list *list,
@@ -43,6 +44,10 @@ int				ft_list_add_front(
 	list->first = new_cell;
 	if (list->size == 0)
 		list->last = new_cell;
+	else if (list->size == 1)
+		list->last->prev = list->first;
+	else
+		list->first->next->prev = list->first;
 	++list->size;
 	return (0);
 }
