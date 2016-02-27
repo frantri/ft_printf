@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 04:16:47 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 10:51:18 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/27 11:24:02 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void			*ft_list_get(
 		void *data,
 		size_t data_size,
 		int (*cmp)(void *, size_t, void *, size_t));
+
+void			*ft_list_get_at(
+		t_list *list,
+		size_t pos);
 
 t_list_cell		*ft_new_list_cell(
 		void *data,
