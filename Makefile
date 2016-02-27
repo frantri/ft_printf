@@ -6,19 +6,23 @@
 #    By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 08:35:37 by ftriquet          #+#    #+#              #
-#    Updated: 2016/02/27 07:33:30 by ftriquet         ###   ########.fr        #
+#    Updated: 2016/02/27 08:59:10 by ftriquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = boolean/ft_isalnum.c \
-		   boolean/ft_isalpha.c \
-		   boolean/ft_isascii.c \
-		   boolean/ft_isblank.c \
-		   boolean/ft_isdigit.c \
-		   boolean/ft_islower.c \
-		   boolean/ft_isnumber.c \
-		   boolean/ft_isprint.c \
-		   boolean/ft_isupper.c
+SRC_NAME = ft_atoi.c \
+		   ft_itoa.c \
+		   ft_nbr_len.c
+
+SRC_NAME += boolean/ft_isalnum.c \
+			boolean/ft_isalpha.c \
+			boolean/ft_isascii.c \
+			boolean/ft_isblank.c \
+			boolean/ft_isdigit.c \
+			boolean/ft_islower.c \
+			boolean/ft_isnumber.c \
+			boolean/ft_isprint.c \
+			boolean/ft_isupper.c
 
 SRC_NAME += display/ft_putchar.c \
 			display/ft_putchar_fd.c \
