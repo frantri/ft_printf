@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 10:41:13 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 12:02:47 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/27 12:03:25 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		*ft_list_get_at(
 		t_list *list,
 		size_t pos)
 {
-	static size_t		previous_pos = 0;
+	//static size_t		previous_pos = 0;
 	static t_list_cell	*cursor = NULL;
 	size_t				i;
 
