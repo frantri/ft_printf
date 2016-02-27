@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2015/11/25 09:55:50 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:29:39 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include <stdlib.h>
+#include <ft_string.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+char	*ft_strmapi(
+		const char *s,
+		char (*f)(unsigned int, char))
 {
-	int		i;
+	char			*new_str;
+	unsigned int	i;
 
-	i = 1;
-	while (n >= (size_t)base)
+	if (!s || !f)
+		return (NULL);
+	new_str = (char *)malloc(sizeof(*new_str) * (ft_strlen(s) + 1));
+	i = 0;
+	if (new_str)
 	{
-		++i;
-		n /= base;
+		while (s[i])
+		{
+			new_str[i] = (*f)(i, s[i]);
+			++i;
+		}
+		new_str[i] = '\0';
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	return (new_str);
 }

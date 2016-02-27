@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2015/11/23 17:10:53 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:36:01 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include "libft.h"
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+char	*ft_strncpy(
+		char *dst,
+		const char *src,
+		size_t n)
 {
-	int		i;
+	size_t	i;
 
-	i = 1;
-	while (n >= (size_t)base)
+	i = 0;
+	while (i < n && src[i])
 	{
+		dst[i] = src[i];
 		++i;
-		n /= base;
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	while (i < n)
+	{
+		dst[i] = '\0';
+		++i;
+	}
+	return (dst);
 }

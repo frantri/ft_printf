@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2015/11/25 14:41:18 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:17:49 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
 #include <string.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+void	*ft_memmove(
+		void *dst,
+		const void *src,
+		size_t len)
 {
-	int		i;
+	size_t	i;
 
-	i = 1;
-	while (n >= (size_t)base)
+	if (src > dst)
 	{
-		++i;
-		n /= base;
+		i = 0;
+		while (i < len)
+		{
+			((char*)dst)[i] = ((char*)src)[i];
+			i++;
+		}
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	else if (src < dst)
+	{
+		i = len;
+		while (i)
+		{
+			((char*)dst)[i - 1] = ((char*)src)[i - 1];
+			i--;
+		}
+	}
+	return (dst);
 }

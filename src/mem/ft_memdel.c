@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2015/11/25 09:09:58 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:20:06 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include <stdlib.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+void	ft_memdel(void **ap)
 {
-	int		i;
-
-	i = 1;
-	while (n >= (size_t)base)
+	if (ap && *ap)
 	{
-		++i;
-		n /= base;
+		free(*ap);
+		*ap = NULL;
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
 }

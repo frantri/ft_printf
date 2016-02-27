@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2015/11/25 09:33:14 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:28:52 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include <stdlib.h>
+#include <ft_string.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+char	*ft_strmap(
+		char const *s,
+		char (*f)(char))
 {
-	int		i;
+	char	*new_str;
+	size_t	i;
 
-	i = 1;
-	while (n >= (size_t)base)
+	i = 0;
+	if (!s || !f)
+		return (NULL);
+	new_str = (char*)malloc(sizeof(*new_str) * (ft_strlen(s) + 1));
+	if (new_str)
 	{
-		++i;
-		n /= base;
+		while (s[i])
+		{
+			new_str[i] = (*f)(s[i]);
+			++i;
+		}
+		new_str[i] = '\0';
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	return (new_str);
 }

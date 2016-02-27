@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_display.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/02/27 06:10:13 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:51:31 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#ifndef FT_DISPLAY_H
+# define FT_DISPLAY_H
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
-{
-	int		i;
-
-	i = 1;
-	while (n >= (size_t)base)
-	{
-		++i;
-		n /= base;
-	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
-}
+void	ft_putchar(char c);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putendl(const char *s);
+void	ft_putendl_fd(const char *s, int fd);
+void	ft_putnbr(int nb);
+void	ft_putnbr_fd(int nb, int fd);
+void	ft_putstr(const char *s);
+void	ft_putstr_fd(const char *s, int fd);
+#endif

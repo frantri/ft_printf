@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2015/11/25 10:44:47 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:27:46 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include <stdlib.h>
+#include <ft_string.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+char	*ft_strjoin(
+		const char *s1,
+		const char *s2)
 {
-	int		i;
+	char	*join;
 
-	i = 1;
-	while (n >= (size_t)base)
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	join = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (join)
 	{
-		++i;
-		n /= base;
+		ft_strcpy(join, s1);
+		ft_strcat(join, s2);
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	return (join);
 }

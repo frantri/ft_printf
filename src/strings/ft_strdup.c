@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2015/11/25 16:23:57 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:26:16 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include <ft_string.h>
+#include <stdlib.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+char	*ft_strdup(const char *s)
 {
-	int		i;
+	char	*new;
 
-	i = 1;
-	while (n >= (size_t)base)
-	{
-		++i;
-		n /= base;
-	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	new = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (new)
+		ft_strcpy(new, s);
+	return (new);
 }

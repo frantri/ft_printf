@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/02/23 08:33:40 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 07:02:29 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
+#include <stdlib.h>
 #include <string.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+char	*ft_strsub(
+		const char *s,
+		unsigned int start,
+		size_t len)
 {
-	int		i;
+	char	*substring;
+	size_t	i;
 
-	i = 1;
-	while (n >= (size_t)base)
+	if (s == NULL)
+		return (NULL);
+	i = 0;
+	substring = (char *)malloc(sizeof(char) * (len + 1));
+	if (substring)
 	{
-		++i;
-		n /= base;
+		while (i < len)
+		{
+			substring[i] = s[start + i];
+			++i;
+		}
+		substring[i] = 0;
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	return (substring);
 }

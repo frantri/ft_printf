@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2015/11/23 18:43:47 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:25:27 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
-
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+int		ft_strcmp(
+		const char *s1,
+		const char *s2)
 {
-	int		i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	i = 1;
-	while (n >= (size_t)base)
+	str1 = (unsigned char*)s1;
+	str2 = (unsigned char*)s2;
+	while (*str1 && *str2 && *str1 == *str2)
 	{
-		++i;
-		n /= base;
+		++str1;
+		++str2;
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	return (*str1 - *str2);
 }

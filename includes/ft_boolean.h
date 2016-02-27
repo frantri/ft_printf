@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/02/27 06:03:42 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:58:33 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
-{
-	int		i;
-
-	i = 1;
-	while (n >= (size_t)base)
-	{
-		++i;
-		n /= base;
-	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
-}
+int		ft_isupper(int c);
+int		ft_isprint(int c);
+int		ft_isnumber(const char *s);
+int		ft_islower(int c);
+int		ft_isdigit(int c);
+int		ft_isblank(int c);
+int		ft_isascii(int c);
+int		ft_isascii(int c);
+int		ft_isalpha(int c);
+int		ft_isalnum(int c);
+#endif

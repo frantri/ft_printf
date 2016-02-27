@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_list_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/02/27 05:27:28 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:57:02 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include <ft_list.h>
+#include <stdlib.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+t_list			ft_list_map(
+		t_list *list,
+		t_list_cell *(*func)(t_list_cell *),
+		void (*del_func)(void *, size_t))
 {
-	int		i;
+	t_list_cell	*it;
+	t_list_cell	*tmp;
+	t_list		res;
 
-	i = 1;
-	while (n >= (size_t)base)
+	ft_list_init(&res, del_func);
+	it = list->first;
+	while (it)
 	{
-		++i;
-		n /= base;
+		tmp = (*func)(it);
+		ft_list_add_back(list, tmp->data, tmp->data_size);
+		(*del_func)(tmp->data, tmp->data_size);
+		free(tmp);
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	return (res);
 }

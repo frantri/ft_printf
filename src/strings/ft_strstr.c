@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2015/11/23 18:07:15 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 07:01:17 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
 #include <string.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+char	*ft_strstr(
+		const char *s1,
+		const char *s2)
 {
-	int		i;
+	size_t	i;
+	size_t	j;
 
-	i = 1;
-	while (n >= (size_t)base)
+	if (!*s2)
+		return ((char*)s1);
+	i = 0;
+	j = 0;
+	while (s1[i])
 	{
+		j = 0;
+		while (s2[j] && s1[i + j] && s1[i + j] == s2[j])
+		{
+			++j;
+		}
+		if (!s2[j])
+			return ((char*)(s1 + i));
 		++i;
-		n /= base;
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	return (NULL);
 }

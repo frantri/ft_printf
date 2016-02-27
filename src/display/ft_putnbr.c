@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2015/11/25 13:42:54 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:13:21 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include "libft.h"
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+void	ft_putnbr(int nb)
 {
-	int		i;
-
-	i = 1;
-	while (n >= (size_t)base)
+	if (nb == -2147483648)
 	{
-		++i;
-		n /= base;
+		ft_putstr("-2147483648");
+		return ;
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
 	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	{
+		ft_putchar('-');
+		nb = -nb;
+	}
+	if (nb > 9)
+		ft_putnbr(nb / 10);
+	ft_putchar(nb % 10 + '0');
 }

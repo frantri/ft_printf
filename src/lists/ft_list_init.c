@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_list_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/02/27 02:35:57 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:54:49 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include <libft.h>
+#include <ft_list.h>
+#include <stdlib.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+static void		ft_dfl_del_func(
+		void *data,
+		size_t data_size)
 {
-	int		i;
-
-	i = 1;
-	while (n >= (size_t)base)
-	{
-		++i;
-		n /= base;
-	}
-	return (i);
+	(void)data_size;
+	(void)data;
 }
 
-int		nbr_len(
-		intmax_t nb,
-		int base)
+void			ft_list_init(
+		t_list *list,
+		void (*del_func)(void *, size_t))
 {
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
+	ft_bzero(list, sizeof(t_list));
+	if (del_func)
+		list->del_func = del_func;
 	else
-		return (nbr_len_u(nb, base));
+		list->del_func = &ft_dfl_del_func;
 }

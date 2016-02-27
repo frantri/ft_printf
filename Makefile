@@ -6,89 +6,97 @@
 #    By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 08:35:37 by ftriquet          #+#    #+#              #
-#    Updated: 2016/02/26 20:30:36 by ftriquet         ###   ########.fr        #
+#    Updated: 2016/02/27 07:27:36 by ftriquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = ft_printf/ft_printf.c \
-		   ft_printf/fill_flags.c \
-		   ft_printf/printf_di.c \
-		   ft_printf/printf_u.c \
-		   ft_printf/buffer.c \
-		   ft_printf/ft_printf_c.c \
-		   ft_printf/ft_printf_s.c \
-		   ft_printf/printf_s_utils.c \
-		   ft_printf/printf_wchar.c \
-		   ft_printf/printf_color.c \
-		   ft_printf/printf_divs.c \
-		   ft_empty_string.c \
-		   ft_tabsize.c \
-		   ft_atoi.c \
-		   ft_itoa.c \
-		   ft_nbr_len.c \
-		   init.c \
-		   get_next_line.c \
-		   ft_trim.c \
-		   ft_strsubptr.c \
-		   ft_match.c \
-		   ft_realloc.c \
-		   ft_bzero.c \
-		   ft_get_index.c \
-		   ft_isalnum.c \
-		   ft_isalpha.c \
-		   ft_isascii.c \
-		   ft_isblank.c \
-		   ft_isdigit.c \
-		   ft_islower.c \
-		   ft_isprint.c \
-		   ft_isupper.c \
-		   ft_freetab.c \
-		   ft_memalloc.c \
-		   ft_memccpy.c \
-		   ft_memchr.c \
-		   ft_memcmp.c \
-		   ft_memcpy.c \
-		   ft_memdel.c \
-		   ft_memmove.c \
-		   ft_memset.c \
-		   ft_putchar.c \
-		   ft_putchar_fd.c \
-		   ft_putendl.c \
-		   ft_putendl_fd.c \
-		   ft_putnbr.c \
-		   ft_putnbr_fd.c \
-		   ft_putstr.c \
-		   ft_putstr_fd.c \
-		   ft_strcat.c \
-		   ft_strchr.c \
-		   ft_strclr.c \
-		   ft_strcmp.c \
-		   ft_strcpy.c \
-		   ft_strdel.c \
-		   ft_strdup.c \
-		   ft_strequ.c \
-		   ft_striter.c \
-		   ft_striteri.c \
-		   ft_strjoin.c \
-		   ft_strlcat.c \
-		   ft_strlen.c \
-		   ft_strmap.c \
-		   ft_strmapi.c \
-		   ft_strncat.c \
-		   ft_strncmp.c \
-		   ft_strncpy.c \
-		   ft_strnequ.c \
-		   ft_strnew.c \
-		   ft_strnlen.c \
-		   ft_strnstr.c \
-		   ft_strrchr.c \
-		   ft_strsplit.c \
-		   ft_copy_word.c \
-		   ft_strstr.c \
-		   ft_strsub.c \
-		   ft_strtrim.c \
-		   ft_tolower.c \
-		   ft_toupper.c
+SRC_NAME = boolean/ft_isalnum.c \
+		   boolean/ft_isalpha.c \
+		   boolean/ft_isascii.c \
+		   boolean/ft_isblank.c \
+		   boolean/ft_isdigit.c \
+		   boolean/ft_islower.c \
+		   boolean/ft_isnumber.c \
+		   boolean/ft_isprint.c \
+		   boolean/ft_isupper.c
+
+SRC_NAME += display/ft_putchar.c \
+			display/ft_putchar_fd.c \
+			display/ft_putendl.c \
+			display/ft_putendl_fd.c \
+			display/ft_putnbr.c \
+			display/ft_putnbr_fd.c \
+			display/ft_putstr.c \
+			display/ft_putstr_fd.c
+
+SRC_NAME += ft_printf/buffer.c \
+			ft_printf/fill_flags.c \
+			ft_printf/ft_printf.c \
+			ft_printf/ft_printf_c.c \
+			ft_printf/ft_printf_s.c \
+			ft_printf/printf_color.c \
+			ft_printf/printf_di.c \
+			ft_printf/printf_divs.c \
+			ft_printf/printf_s_utils.c \
+			ft_printf/printf_u.c \
+			ft_printf/printf_wchar.c
+
+SRC_NAME += lists/ft_list_add.c \
+			lists/ft_list_cells.c \
+			lists/ft_list_init.c \
+			lists/ft_list_iter.c \
+			lists/ft_list_map.c
+
+SRC_NAME += mem/ft_bzero.c \
+			mem/ft_memalloc.c \
+			mem/ft_memccpy.c \
+			mem/ft_memchr.c \
+			mem/ft_memcmp.c \
+			mem/ft_memcpy.c \
+			mem/ft_memdel.c \
+			mem/ft_memdup.c \
+			mem/ft_memmove.c \
+			mem/ft_memset.c
+
+SRC_NAME += strings/ft_empty_string.c \
+			strings/ft_freetab.c \
+			strings/ft_get_index.c \
+			strings/ft_match.c \
+			strings/ft_str_replace.c \
+			strings/ft_strcat.c \
+			strings/ft_strchr.c \
+			strings/ft_strclr.c \
+			strings/ft_strcmp.c \
+			strings/ft_strcpy.c \
+			strings/ft_strdel.c \
+			strings/ft_strdup.c \
+			strings/ft_strequ.c \
+			strings/ft_striter.c \
+			strings/ft_striteri.c \
+			strings/ft_strjoin.c \
+			strings/ft_strlcat.c \
+			strings/ft_strlen.c \
+			strings/ft_strmap.c \
+			strings/ft_strmapi.c \
+			strings/ft_strncat.c \
+			strings/ft_strncmp.c \
+			strings/ft_strncpy.c \
+			strings/ft_strnequ.c \
+			strings/ft_strnew.c \
+			strings/ft_strnlen.c \
+			strings/ft_strnstr.c \
+			strings/ft_strrchr.c \
+			strings/ft_strreplace.c \
+			strings/ft_strsplit.c \
+			strings/ft_strstr.c \
+			strings/ft_strsub.c \
+			strings/ft_strsubptr.c \
+			strings/ft_strtrim.c \
+			strings/ft_tabsize.c \
+			strings/ft_tolower.c \
+			strings/ft_toupper.c \
+			strings/ft_trim.c \
+			strings/get_next_line.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -106,30 +114,23 @@ CFLAGS = -Wall -Wextra -Werror
 
 INC_PATH = ./includes
 
-HEADERS_NAME = libft.h ft_printf.h
-
-HEADERS = $(addprefix $(INC_PATH)/, $(HEADERS_NAME))
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADERS)
-	@mkdir -p ./obj/ft_printf
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	@mkdir -p ./obj/{ft_printf,strings,boolean,display,lists,mem}
 	gcc $(CFLAGS) -c $< -o $@ -I $(INC_PATH)
 
 clean:
-	rm -f $(OBJ)
+	rm -f ./obj
 
 fclean:clean
 	rm -f $(NAME)
 
 re:fclean all
 
-test:
-	echo SRC_NAME: $(SRC_NAME)
-	echo SRC: $(SRC)
 
 .PHONY: all clean fclean re

@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_freetab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/02/23 08:43:04 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:22:30 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include <stdlib.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+void		ft_freetab(char **tab)
 {
 	int		i;
 
-	i = 1;
-	while (n >= (size_t)base)
+	i = 0;
+	while (tab[i])
 	{
-		++i;
-		n /= base;
+		free(tab[i]);
+		i++;
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	free(tab);
 }

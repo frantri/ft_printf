@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_list_iter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/02/27 05:22:47 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:54:52 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include <ft_list.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+void			ft_list_iter(
+		t_list *list,
+		void (*func)(void *data, size_t data_size))
 {
-	int		i;
+	t_list_cell	*it;
 
-	i = 1;
-	while (n >= (size_t)base)
+	it = list->first;
+	while (it)
 	{
-		++i;
-		n /= base;
+		(*func)(it->data, it->data_size);
+		it = it->next;
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
 }

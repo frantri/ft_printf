@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_empty_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:23:46 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:41:42 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/02/02 13:04:08 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/02/27 06:21:44 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <string.h>
+#include <ft_boolean.h>
 
-int		nbr_len_u(
-		uintmax_t n,
-		int base)
+int		ft_empty_string(const char *s)
 {
-	int		i;
-
-	i = 1;
-	while (n >= (size_t)base)
+	while (*s)
 	{
-		++i;
-		n /= base;
+		if (ft_isblank(*s) == 0)
+			return (0);
+		++s;
 	}
-	return (i);
-}
-
-int		nbr_len(
-		intmax_t nb,
-		int base)
-{
-	if (nb < 0)
-		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	return (1);
 }
