@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 06:21:31 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 07:12:32 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/02/27 07:31:09 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int		ft_empty_string(const char *s);
 void	ft_freetab(char **tab);
+int		ft_tabsize(void **t);
 void	ft_strclr(char *s);
 void	ft_strdel(char **as);
 char	*ft_strdup(const char *s);
@@ -24,6 +25,11 @@ char	*ft_strnew(size_t size);
 char	*ft_strtrim(const char *s);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+
+char	*ft_strchr(
+		const char *s,
+	   	int c);
+
 char		**ft_strsplit(
 		const char *s,
 		char c);
