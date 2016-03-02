@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 10:41:13 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 16:31:23 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/02 20:37:10 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			*ft_list_get(
 	return (NULL);
 }
 
-void		*ft_list_get_at(
+void			*ft_list_get_at(
 		t_list *list,
 		size_t pos)
 {

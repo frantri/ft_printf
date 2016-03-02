@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 02:38:58 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 15:23:47 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/02 21:25:46 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int				ft_list_add_sort(
 		t_list *list,
 		void *data,
 		size_t data_size,
-		int (*cmp)(void *,size_t,  void *, size_t))
+		int (*cmp)(void *, size_t, void *, size_t))
 {
 	t_list_cell	*it;
 	t_list_cell	*new_cell;

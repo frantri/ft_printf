@@ -6,14 +6,14 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:34:58 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 08:59:31 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/02 20:36:26 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <libft.h>
 
-char	digit(
+char		digit(
 		int nb,
 		int maj)
 {
