@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 10:58:53 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 07:01:49 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:14:56 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #include <ft_string.h>
 #include <string.h>
 
-static int	ft_count_words(
-		const char *s,
-		char c)
+static int	ft_count_words(const char *s, char c)
 {
 	size_t			i;
 	unsigned int	count;
@@ -36,10 +34,7 @@ static int	ft_count_words(
 	return (count);
 }
 
-static char	*ft_copy_word(
-		const char *s,
-		char sep,
-		unsigned int n)
+static char	*ft_copy_word(const char *s, char sep, unsigned int n)
 {
 	unsigned int	i;
 	unsigned int	len;
@@ -66,9 +61,7 @@ static char	*ft_copy_word(
 	return (res);
 }
 
-char		**ft_strsplit(
-		const char *s,
-		char c)
+char		**ft_strsplit(const char *s, char c)
 {
 	unsigned int	nb_words;
 	char			**tab;

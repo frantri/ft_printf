@@ -6,13 +6,11 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:43:47 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:25:27 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:13:44 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(
-		const char *s1,
-		const char *s2)
+int		ft_strcmp(const char *s1, const char *s2)
 {
 	unsigned char	*str1;
 	unsigned char	*str2;

@@ -6,15 +6,13 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 16:54:13 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:32:13 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:14:34 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-size_t	ft_strnlen(
-		const char *s,
-		size_t max)
+size_t	ft_strnlen(const char *s, size_t max)
 {
 	size_t	i;
 

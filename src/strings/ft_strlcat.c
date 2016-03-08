@@ -6,16 +6,13 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 15:05:21 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:28:15 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:14:08 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_string.h>
 
-size_t	ft_strlcat(
-		char *dest,
-		char const *src,
-		size_t n)
+size_t	ft_strlcat(char *dest, char const *src, size_t n)
 {
 	size_t	i;
 	size_t	dest_size;

@@ -6,16 +6,14 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 05:27:28 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:57:02 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/06 19:46:52 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_list.h>
 #include <stdlib.h>
 
-t_list			ft_list_map(
-		t_list *list,
-		t_list_cell *(*func)(t_list_cell *),
+t_list			ft_list_map(t_list *list, t_list_cell *(*func)(t_list_cell *),
 		void (*del_func)(void *, size_t))
 {
 	t_list_cell	*it;

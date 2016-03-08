@@ -6,16 +6,14 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 09:55:50 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:29:39 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:14:16 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <ft_string.h>
 
-char	*ft_strmapi(
-		const char *s,
-		char (*f)(unsigned int, char))
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
 	char			*new_str;
 	unsigned int	i;

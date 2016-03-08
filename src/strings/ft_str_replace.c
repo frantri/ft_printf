@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 05:40:14 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:59:41 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:13:09 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 #include <stdlib.h>
 #include <ft_string.h>
 
-int		ft_insert_string(
-		char **str,
-		int beg,
-		int end,
-		char *insert)
+int		ft_insert_string(char **str, int beg, int end, char *insert)
 {
 	char		*res;
 	size_t		begsize;
@@ -36,10 +32,7 @@ int		ft_insert_string(
 	return (0);
 }
 
-int		ft_str_replace(
-		char **str,
-		char *search,
-		char *replace)
+int		ft_str_replace(char **str, char *search, char *replace)
 {
 	char		*tmp;
 

@@ -6,25 +6,27 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 13:42:54 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:13:21 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:24:37 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int nb)
+void	ft_putnbr(intmax_t nb, int base)
 {
-	if (nb == -2147483648)
-	{
-		ft_putstr("-2147483648");
-		return ;
-	}
 	if (nb < 0)
 	{
 		ft_putchar('-');
-		nb = -nb;
+		return (ft_putunbr(-nb, base));
 	}
 	if (nb > 9)
-		ft_putnbr(nb / 10);
-	ft_putchar(nb % 10 + '0');
+		ft_putnbr(nb / base, base);
+	ft_putchar(digit(nb % base, 1));
+}
+
+void	ft_putunbr(uintmax_t nb, int base)
+{
+	if (nb > 9)
+		ft_putnbr(nb / base, base);
+	ft_putchar(digit(nb % base, 1));
 }

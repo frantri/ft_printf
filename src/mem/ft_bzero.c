@@ -6,15 +6,13 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:27:13 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:17:11 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:16:36 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	ft_bzero(
-		void *s,
-		size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	while (n)
 	{

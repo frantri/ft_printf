@@ -6,13 +6,11 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 09:29:26 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:36:01 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:14:01 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_striteri(
-		char *s,
-		void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
 

@@ -6,16 +6,13 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 14:41:18 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:17:49 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:17:02 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*ft_memmove(
-		void *dst,
-		const void *src,
-		size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	i;
 

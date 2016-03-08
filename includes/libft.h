@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:15:42 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/03/05 00:58:43 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:08:33 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,11 @@
 
 intmax_t	ft_atoi(const char *str);
 
-char		*ft_itoa_u(
-		uintmax_t n,
-		int base,
-		int maj);
-char		*ft_itoa(
-		intmax_t n,
-		int base,
-		int maj);
+char		*ft_itoa_u(uintmax_t n, int base, int maj);
 
-int			nbr_len_u(
-		uintmax_t n,
-		int base);
+char		*ft_itoa(intmax_t n, int base, int maj);
 
-int			nbr_len(
-		intmax_t nb,
-		int base);
+int			nbr_len_u(uintmax_t n, int base);
+
+int			nbr_len(intmax_t nb, int base);
 #endif

@@ -6,15 +6,13 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:07:25 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:25:44 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:13:48 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-char	*ft_strcpy(
-		char *dst,
-		const char *src)
+char	*ft_strcpy(char *dst, const char *src)
 {
 	size_t	i;
 

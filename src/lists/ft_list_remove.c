@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 10:10:42 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 16:47:32 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:25:49 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ void			*ft_list_remove_front(t_list *list)
 	return (res);
 }
 
-void			*ft_list_remove(
-		t_list *list,
-		void *data,
-		size_t data_size,
+void			*ft_list_remove(t_list *list, void *data, size_t data_size,
 		int (*cmp)(void *, size_t, void *, size_t))
 {
 	t_list_cell	*it;
@@ -83,5 +80,29 @@ void			*ft_list_remove(
 		}
 		it = it->next;
 	}
+	return (res);
+}
+
+void			*ft_list_remove_at(t_list *list, size_t pos)
+{
+	t_list_cell *it;
+	t_list_cell *tmp;
+	void		*res;
+
+	if (pos >= list->size)
+		return (NULL);
+	if (pos == 0)
+		return (ft_list_remove_front(list));
+	if (pos == list->size - 1)
+		return (ft_list_remove_back(list));
+	--list->size;
+	it = list->first;
+	while (--pos > 1)
+		it = it->next;
+	tmp = it->next;
+	res = tmp->data;
+	it->next = tmp->next;
+	it->next->prev = it;
+	free(tmp);
 	return (res);
 }

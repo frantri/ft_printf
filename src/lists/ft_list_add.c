@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 02:38:58 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/03/02 21:25:46 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/06 19:46:25 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 #include <stdlib.h>
 #include <libft.h>
 
-int				ft_list_add_back(
-		t_list *list,
-		void *data,
-		size_t data_size)
+int				ft_list_add_back(t_list *list, void *data, size_t data_size)
 {
 	t_list_cell	*new_cell;
 
@@ -32,10 +29,7 @@ int				ft_list_add_back(
 	return (list->size - 1);
 }
 
-int				ft_list_add_front(
-		t_list *list,
-		void *data,
-		size_t data_size)
+int				ft_list_add_front(t_list *list, void *data, size_t data_size)
 {
 	t_list_cell	*new_cell;
 
@@ -52,10 +46,7 @@ int				ft_list_add_front(
 	return (0);
 }
 
-int				ft_list_add_pos(
-		t_list *list,
-		void *data,
-		size_t data_size,
+int				ft_list_add_pos(t_list *list, void *data, size_t data_size,
 		size_t pos)
 {
 	t_list_cell	*it;
@@ -79,10 +70,7 @@ int				ft_list_add_pos(
 	return (pos);
 }
 
-int				ft_list_add_sort(
-		t_list *list,
-		void *data,
-		size_t data_size,
+int				ft_list_add_sort(t_list *list, void *data, size_t data_size,
 		int (*cmp)(void *, size_t, void *, size_t))
 {
 	t_list_cell	*it;

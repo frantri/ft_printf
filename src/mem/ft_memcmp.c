@@ -6,16 +6,13 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 15:09:51 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:20:14 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:16:51 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-int		ft_memcmp(
-		const void *s1,
-		const void *s2,
-		size_t n)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t			i;
 	unsigned char	*ptr1;

@@ -6,16 +6,14 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 08:34:58 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/03/02 20:36:26 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 16:12:18 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <libft.h>
 
-char		digit(
-		int nb,
-		int maj)
+char		digit(int nb, int maj)
 {
 	if (nb < 10)
 		return ('0' + nb);
@@ -24,10 +22,7 @@ char		digit(
 	return ('a' + nb % 10);
 }
 
-char		*ft_itoa_u(
-		uintmax_t n,
-		int base,
-		int maj)
+char		*ft_itoa_u(uintmax_t n, int base, int maj)
 {
 	char	*res;
 	int		size;
@@ -44,10 +39,7 @@ char		*ft_itoa_u(
 	return (res);
 }
 
-char		*ft_itoa(
-		intmax_t n,
-		int base,
-		int maj)
+char		*ft_itoa(intmax_t n, int base, int maj)
 {
 	char	*res;
 	char	*tmp;

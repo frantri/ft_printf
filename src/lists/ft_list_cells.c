@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 02:32:13 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/03/02 21:26:05 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/06 19:46:34 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 #include <libft.h>
 #include <stdlib.h>
 
-t_list_cell		*ft_new_list_cell(
-		void *data,
-		size_t data_size,
-		t_list_cell *prev,
-		t_list_cell *next)
+t_list_cell		*ft_new_list_cell(void *data, size_t data_size,
+		t_list_cell *prev, t_list_cell *next)
 {
 	t_list_cell	*new_cell;
 

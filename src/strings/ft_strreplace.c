@@ -6,14 +6,11 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:08:55 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:33:00 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:14:45 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_strreplace(
-		char *str,
-		char old,
-		char new)
+void	ft_strreplace(char *str, char old, char new)
 {
 	if (str)
 		while (*str)

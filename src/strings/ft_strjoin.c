@@ -6,16 +6,14 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 10:44:47 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/02/27 06:27:46 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:14:05 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <ft_string.h>
 
-char	*ft_strjoin(
-		const char *s1,
-		const char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*join;
 
