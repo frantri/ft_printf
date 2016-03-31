@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_cells.c                                    :+:      :+:    :+:   */
+/*   ft_mlx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 02:32:13 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/03/30 17:13:15 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/03/26 20:33:58 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/03/28 16:00:18 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_list.h>
-#include <libft.h>
-#include <stdlib.h>
+#ifndef FT_MLX_H
+# define FT_MLX_H
 
-t_list_cell		*ft_new_list_cell(void *data, t_list_cell *prev,
-		t_list_cell *next)
+typedef struct		s_img
 {
-	t_list_cell	*new_cell;
+	void			*p_img;
+	char			*data;
+	int				bpp;
+	int				endian;
+	int				width;
+	int				max_size;
+}					t_img;
 
-	if (!(new_cell = (t_list_cell *)malloc(sizeof(*new_cell))))
-		return (NULL);
-	if (data)
-		new_cell->data = data;
-	else
-		new_cell->data = NULL;
-	new_cell->next = next;
-	new_cell->prev = prev;
-	return (new_cell);
-}
+typedef struct		s_pix
+{
+	int				x;
+	int				y;
+}					t_pix;
+
+t_img				*ft_new_image(int width, int height, void *mlx);
+void				add_pix_to_img(t_img *img, t_pix point, int color);
+
+#endif

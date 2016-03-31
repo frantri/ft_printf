@@ -6,13 +6,14 @@
 #    By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 08:35:37 by ftriquet          #+#    #+#              #
-#    Updated: 2016/03/05 01:35:47 by ftriquet         ###   ########.fr        #
+#    Updated: 2016/03/31 15:12:11 by ftriquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_NAME = ft_atoi.c \
 		   ft_itoa.c \
-		   ft_nbr_len.c
+		   ft_nbr_len.c \
+		   ft_error.c
 
 SRC_NAME += boolean/ft_isalnum.c \
 			boolean/ft_isalpha.c \
@@ -102,7 +103,14 @@ SRC_NAME += strings/ft_empty_string.c \
 			strings/ft_tolower.c \
 			strings/ft_toupper.c \
 			strings/ft_trim.c \
+			strings/ft_tablen.c \
 			strings/get_next_line.c
+
+SRC_NAME += slices/slices.c \
+			slices/slices_utils.c \
+			slices/slices_iter.c
+
+SRC_NAME += mlx/image.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -116,7 +124,7 @@ OBJ = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
 
 NAME = libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 INC_PATH = ./includes
 
@@ -127,7 +135,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	@mkdir -p ./obj/{ft_printf,strings,boolean,display,lists,mem}
+	@mkdir -p ./obj/{ft_printf,strings,boolean,display,lists,mem,slices,mlx}
 	gcc $(CFLAGS) -c $< -o $@ -I $(INC_PATH)
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 10:10:42 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/03/08 22:25:49 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/30 17:13:48 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void			*ft_list_remove_front(t_list *list)
 	return (res);
 }
 
-void			*ft_list_remove(t_list *list, void *data, size_t data_size,
-		int (*cmp)(void *, size_t, void *, size_t))
+void			*ft_list_remove(t_list *list, void *data,
+		int (*cmp)(void *, void *))
 {
 	t_list_cell	*it;
 	t_list_cell	*tmp;
@@ -63,13 +63,13 @@ void			*ft_list_remove(t_list *list, void *data, size_t data_size,
 
 	it = list->first;
 	res = NULL;
-	if ((*cmp)(data, data_size, it->data, it->data_size) == 0)
+	if ((*cmp)(data, it->data) == 0)
 		return (ft_list_remove_front(list));
-	if ((*cmp)(data, data_size, list->last->data, list->last->data_size) == 0)
+	if ((*cmp)(data, list->last->data) == 0)
 		return (ft_list_remove_back(list));
 	while ((tmp = it->next))
 	{
-		if ((*cmp)(data, data_size, it->next->data, it->next->data_size) == 0)
+		if ((*cmp)(data, it->next->data) == 0)
 		{
 			tmp->next->prev = it;
 			it->next = tmp->next;

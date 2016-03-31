@@ -6,13 +6,15 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 06:21:31 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/03/08 22:09:14 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/30 15:46:19 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_STRING_H
 # define FT_STRING_H
 # include <string.h>
+
+size_t	ft_tablen(char **t);
 
 int		ft_empty_string(const char *s);
 

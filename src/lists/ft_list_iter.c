@@ -6,21 +6,21 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 05:22:47 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/03/06 19:46:47 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/30 17:12:14 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_list.h>
 
 void			ft_list_iter(t_list *list,
-		void (*func)(void *data, size_t data_size))
+		void (*func)(void *data))
 {
 	t_list_cell	*it;
 
 	it = list->first;
 	while (it)
 	{
-		(*func)(it->data, it->data_size);
+		(*func)(it->data);
 		it = it->next;
 	}
 }

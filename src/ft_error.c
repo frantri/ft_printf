@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_cells.c                                    :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 02:32:13 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/03/30 17:13:15 by ftriquet         ###   ########.fr       */
+/*   Created: 2016/03/31 15:04:22 by ftriquet          #+#    #+#             */
+/*   Updated: 2016/03/31 15:11:20 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_list.h>
-#include <libft.h>
-#include <stdlib.h>
+#include <ft_error.h>
+#include <string.h>
+#include <errno.h>
+#include <ft_printf.h>
+#include <unistd.h>
 
-t_list_cell		*ft_new_list_cell(void *data, t_list_cell *prev,
-		t_list_cell *next)
+char		*ft_strerror(void)
 {
-	t_list_cell	*new_cell;
+	size_t	i;
 
-	if (!(new_cell = (t_list_cell *)malloc(sizeof(*new_cell))))
-		return (NULL);
-	if (data)
-		new_cell->data = data;
-	else
-		new_cell->data = NULL;
-	new_cell->next = next;
-	new_cell->prev = prev;
-	return (new_cell);
+	i = 0;
+	while (i < 132)
+	{
+		if (g_errtab[i].code == errno)
+			return (g_errtab[i].msg);
+		++i;
+	}
+	return (NULL);
+}
+
+void		ft_perror(char *msg)
+{
+	char	*err_msg;
+
+	if (!(err_msg = ft_strerror()))
+		return ;
+	ft_dprintf(STDERR_FILENO, "%s: %s\n", msg, err_msg);
 }

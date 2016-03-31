@@ -6,7 +6,7 @@
 /*   By: ftriquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 02:35:57 by ftriquet          #+#    #+#             */
-/*   Updated: 2016/03/06 19:46:42 by ftriquet         ###   ########.fr       */
+/*   Updated: 2016/03/30 17:14:12 by ftriquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 #include <ft_list.h>
 #include <stdlib.h>
 
-static void		ft_dfl_del_func(void *data, size_t data_size)
+static void		ft_dfl_del_func(void *data)
 {
-	(void)data_size;
 	(void)data;
 }
 
-void			ft_list_init(t_list *list, void (*del_func)(void *, size_t))
+void			ft_list_init(t_list *list, void (*del_func)(void *))
 {
 	ft_bzero(list, sizeof(t_list));
 	if (del_func)
