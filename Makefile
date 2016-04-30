@@ -110,7 +110,10 @@ SRC_NAME += slices/slices.c \
 			slices/slices_utils.c \
 			slices/slices_iter.c
 
-SRC_NAME += mlx/image.c
+SYSTEM = $(shell uname -s)
+ifeq ($(SYSTEM),Darwin)
+	SRC_NAME += mlx/image.c
+endif
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

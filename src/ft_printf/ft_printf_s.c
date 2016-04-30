@@ -80,9 +80,9 @@ void		print_s(t_arg *arg, void *s)
 	if (arg->f_prec && arg->v_prec == 0)
 		return (print_s_noprec(arg));
 	useless_func(arg, (&s), 0, 0);
-	len = arg->conv == 's' ? ft_strlen(s) : wcharlen(s);
+	len = arg->conv == 's' ? (int)ft_strlen(s) : wcharlen(s);
 	size = arg->v_prec && arg->v_prec < len ? arg->v_prec - (arg->conv == 'S') :
-		ft_strlen(s);
+		(int)ft_strlen(s);
 	if (!arg->f_prec && (arg->conv == 'S'))
 		size = wcharlen(s);
 	print = size;
