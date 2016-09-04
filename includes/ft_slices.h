@@ -37,5 +37,6 @@ void				ft_slice_iter(t_slice *v, void (*f)(void *));
 int					ft_slice_match(t_slice *s, int (*f)(void *));
 void				ft_slice_merge_sort(t_slice *slice,
 		int (*cmp)(void *, void *));
+void				*ft_slice_reduce(t_slice *s, void *(*f)(void *, void *), void *init);
 
 #endif

@@ -109,6 +109,7 @@ SRC_NAME += strings/ft_empty_string.c \
 SRC_NAME += slices/slices.c \
 			slices/slices_utils.c \
 			slices/slices_sort.c \
+			slices/slices_op.c \
 			slices/slices_iter.c
 
 SYSTEM = $(shell uname -s)
