@@ -27,13 +27,15 @@
 # define SUCCESS 0
 # define FAILURE 1
 
-intmax_t	ft_atoi(const char *str);
+typedef unsigned int	t_ui;
 
-char		*ft_itoa_u(uintmax_t n, int base, int maj);
+intmax_t				ft_atoi(const char *str);
 
-char		*ft_itoa(intmax_t n, int base, int maj);
+char					*ft_itoa_u(uintmax_t n, int base, int maj);
 
-int			nbr_len_u(uintmax_t n, int base);
+char					*ft_itoa(intmax_t n, int base, int maj);
 
-int			nbr_len(intmax_t nb, int base);
+int						nbr_len_u(uintmax_t n, int base);
+
+int						nbr_len(intmax_t nb, int base);
 #endif
