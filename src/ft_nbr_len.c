@@ -30,6 +30,5 @@ int		nbr_len(intmax_t nb, int base)
 {
 	if (nb < 0)
 		return (1 + nbr_len_u(-nb, base));
-	else
-		return (nbr_len_u(nb, base));
+	return (nbr_len_u(nb, base));
 }
